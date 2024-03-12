@@ -1,0 +1,122 @@
+commit 8712628c873e0cc769eb0d5f2635e88c9d775887
+Author: Ville-Petteri Juselius <vp.juselius@gmail.com>
+Date:   Mon Mar 11 15:45:14 2024 +0200
+
+    jotain filejä
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit bb73d900f510e5d893b9f923ca142be23d8a5b33
+Author: Ville-Petteri Juselius <vp.juselius@gmail.com>
+Date:   Mon Mar 11 15:33:29 2024 +0200
+
+    luotiin tiedostoja
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit d9dfb58d7b5553f1ac9ff0ed4c69c99465e042d1
+Author: Ville-Petteri Juselius <vp.juselius@gmail.com>
+Date:   Mon Mar 11 15:21:28 2024 +0200
+
+    add -p treeniä
+
+ eka.txt    | 6 +++---
+ kolmas.txt | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+commit 0cd2509b57d0e172e813e0828cc3aeff52898351
+Author: Ville-Petteri Juselius <vp.juselius@gmail.com>
+Date:   Mon Mar 11 14:33:32 2024 +0200
+
+    Nimetty tiedosto->eka
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 1c0c5f7118ac1676c2e8aa2714c34f9daaf381e7
+Author: Ville-Petteri Juselius <vp.juselius@gmail.com>
+Date:   Mon Mar 11 14:33:03 2024 +0200
+
+    Nimetty tiedosto->eka
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit b84bf17ae88780ddeeec76789a63f7399e1410bf
+Author: Ville-Petteri Juselius <vp.juselius@gmail.com>
+Date:   Mon Mar 11 14:28:28 2024 +0200
+
+    lorem lorem
+
+ tiedosto.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+commit edf084a088892f7e42a916ab5fe32c7d5085570e
+Author: Ville-Petteri Juselius <vp.juselius@gmail.com>
+Date:   Mon Mar 11 14:26:17 2024 +0200
+
+    lorem
+
+ tiedosto.txt | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+commit d8af1ad025b390bbd71bf8fe4c32d55cae88d596
+Author: Ville-Petteri Juselius <vp.juselius@gmail.com>
+Date:   Mon Mar 11 14:18:52 2024 +0200
+
+    luotiin stuff
+
+ stuff/rdmstuff.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 4270d43ac6ca6fff600c3a7b907a2b1afdb2930e
+Author: Ville-Petteri Juselius <vp.juselius@gmail.com>
+Date:   Mon Mar 11 14:14:12 2024 +0200
+
+    muutoksia toiseen ja kolmanteen
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit df91854a389817db2cde62aa77bdb68877b8ebd2
+Author: Ville-Petteri Juselius <vp.juselius@gmail.com>
+Date:   Mon Mar 11 14:09:48 2024 +0200
+
+    luotiin toinen.txt
+
+ toinen.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 7506b075cb83e3228894f253318a310be3be545e
+Author: Ville-Petteri Juselius <vp.juselius@gmail.com>
+Date:   Mon Mar 11 14:07:22 2024 +0200
+
+    Luotiin kolmas.txt
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit a5b8ea1969c81ebd323661de1389a712746f14e7
+Author: Ville-Petteri Juselius <vp.juselius@gmail.com>
+Date:   Mon Mar 11 13:59:18 2024 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 60a6b409c1daac9f6238177c6e90bc0cae046793
+Author: Ville-Petteri Juselius <vp.juselius@gmail.com>
+Date:   Mon Mar 11 13:43:35 2024 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ 
