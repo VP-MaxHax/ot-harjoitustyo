@@ -4,7 +4,9 @@ Tänne palauttelen **kaikki** viikkolaskarit sekä muut *tärkeähköt* kurssiin
 
 # Projekti
 
-[vaatimusmäärittely.md](https://github.com/VP-MaxHax/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusm%C3%A4%C3%A4rittely.md)
+[Vaatimusmäärittely](https://github.com/VP-MaxHax/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusm%C3%A4%C3%A4rittely.md)
+
+[Työaikakirjanpito](https://github.com/VP-MaxHax/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
 # Laskarit
 
@@ -13,4 +15,3 @@ Tänne palauttelen **kaikki** viikkolaskarit sekä muut *tärkeähköt* kurssiin
 [gitlog.txt](https://github.com/VP-MaxHax/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
 
 [komentorivi.txt](https://github.com/VP-MaxHax/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
-
