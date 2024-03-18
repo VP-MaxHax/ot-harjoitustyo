@@ -9,4 +9,4 @@ Tänne palauttelen **kaikki** viikkolaskarit sekä muut *tärkeähköt* kurssiin
 
 [komentorivi.txt](https://github.com/VP-MaxHax/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
 
-Thdään vähän muutoksia localiin
+[vaatimusmäärittely.md](https://github.com/VP-MaxHax/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusm%C3%A4%C3%A4rittely.md)
