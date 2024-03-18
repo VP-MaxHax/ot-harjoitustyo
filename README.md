@@ -2,6 +2,11 @@
 
 Tänne palauttelen **kaikki** viikkolaskarit sekä muut *tärkeähköt* kurssiin liittyvät palautukset. 
 
+# Projekti
+
+[vaatimusmäärittely.md](https://github.com/VP-MaxHax/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusm%C3%A4%C3%A4rittely.md)
+
+# Laskarit
 
 ## Viikko1
 
@@ -9,4 +14,3 @@ Tänne palauttelen **kaikki** viikkolaskarit sekä muut *tärkeähköt* kurssiin
 
 [komentorivi.txt](https://github.com/VP-MaxHax/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
 
-[vaatimusmäärittely.md](https://github.com/VP-MaxHax/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusm%C3%A4%C3%A4rittely.md)
