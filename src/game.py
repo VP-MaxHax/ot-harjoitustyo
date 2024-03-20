@@ -132,10 +132,23 @@ class Vampire(pygame.sprite.Sprite):
     def update(self):
         dx = self.player.rect.centerx - self.rect.centerx
         dy = self.player.rect.centery - self.rect.centery
+        #print(self.player.rect.centerx, self.player.rect.centery)
         distance = math.sqrt(dx ** 2 + dy ** 2)
+        
+        # Normalize the movement vector
         if distance != 0:
-            self.rect.x += dx / distance
-            self.rect.y += dy / distance
+            dx /= distance
+            dy /= distance
+
+        
+        # Set the speed of the vampire
+        speed = 1  # Adjust this value as needed
+        
+        # Move the vampire towards the player
+        print(dx, dy)
+        self.rect.x += dx * speed
+        self.rect.y += dy * speed
+        #print(self.rect.x, self.rect.y)
 
 # Define the bullet class
 class Bullet(pygame.sprite.Sprite):
@@ -214,7 +227,8 @@ while running:
             vampire = Vampire(player)
             all_sprites.add(vampire)
             vampires.add(vampire)
-            spawn_interval = int(2000-(math.sqrt(pygame.time.get_ticks())*5))//1
+            #spawn_interval = int(2000-(math.sqrt(pygame.time.get_ticks())*5))//1
+            spawn_interval = 999999
             pygame.time.set_timer(SPAWN_VAMPIRE_EVENT, spawn_interval)
 
     # Update
@@ -229,8 +243,8 @@ while running:
     # Check for collisions between player and vampires
     hits_bullet = pygame.sprite.groupcollide(bullets, vampires, False, False)
     hits_vampire = pygame.sprite.groupcollide(vampires, bullets, True, False)
-    print(hits_vampire)
-    print(hits_bullet)
+    #print(hits_vampire)
+    #print(hits_bullet)
     for vampire_hit in hits_vampire:
         vampires.remove(vampire_hit)
         all_sprites.remove(vampire_hit)

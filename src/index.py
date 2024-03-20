@@ -1,0 +1,3 @@
+import gameloop
+
+gameloop.run()
