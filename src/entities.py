@@ -2,6 +2,8 @@ import pygame
 import random
 import math
 
+# All entities done with the help of Chat-GPT
+
 WIDTH, HEIGHT = 800, 600
 
 # Define colors
@@ -28,8 +30,8 @@ class Player(pygame.sprite.Sprite):
         self.bullet_speed = 5
         self.pickupradius = 20
         self.exprate = 1
-        self.pierce = 2
-        self.bullet_size = 100
+        self.pierce = 1
+        self.bullet_size = 10
 
 
     def update(self):
@@ -98,7 +100,7 @@ class Vampire(pygame.sprite.Sprite):
         speed = 1  # Adjust this value as needed
         
         # Move the vampire towards the player
-        print(dx, dy)
+        #print(dx, dy)
         self.rect.x += dx * speed
         self.rect.y += dy * speed
         #print(self.rect.x, self.rect.y)

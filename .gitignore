@@ -1,1 +1,9 @@
+__pycache__.vscode
+.DS_Store
+.coverage
+.pytest_cache
+htmlcov
 __pycache__
+*.py[cod]
+*$py.class
+src/game.py

@@ -17,3 +17,15 @@ Käytetyt tunnit 1h (yht. 7h)
 Sovelluksen jakoa tiedostoihin projektin aloitusta varten.
 
 Käytetyt tunnit: 2h (yht. 9h)
+
+## 21.3.2024
+
+Poetryn ja muiden viikko 3 vaatimusten täyttämistä. Vielä vähän vaiheessa.
+
+Käytetyt tunnit 2h (yht. 11h)
+
+## 25.3.2024
+
+Satunnaiset päivitykset.
+
+Käytetyt tunnit 2h (yht. 13h)

@@ -4,6 +4,8 @@ from upgrades import Upgrades
 import sys
 import math
 
+# All of gameloop is done with help of Chat-GPT
+
 def run():
     # Initialize Pygame
     pygame.init()
@@ -41,13 +43,72 @@ def run():
         screen.blit(score, (300, 0))
         screen.blit(lvlup, (50, 0))
         # Levelup choices
-        if levelup == True:
-            pygame.draw.rect(screen, (0, 0, 0), (50, 150, 200, 350)) 
-            pygame.draw.rect(screen, (0, 0, 0), (300, 150, 200, 350)) 
-            pygame.draw.rect(screen, (0, 0, 0), (550, 150, 200, 350)) 
         pygame.display.flip()
         # Cap the frame rate
         pygame.time.Clock().tick(30)
+
+    def draw_levelup():
+        waiting_for_key = True
+        choices = upgrade.pick_options()
+        print(choices)
+        choice1 = upgrade_choices(choices[0])
+        choice2 = upgrade_choices(choices[1])
+        choice3 = upgrade_choices(choices[2])
+        while waiting_for_key:
+            screen.fill(WHITE)
+            all_sprites.draw(screen)
+            screen.blit(score, (300, 0))
+            screen.blit(lvlup, (50, 0))
+            pygame.draw.rect(screen, (0, 0, 0), (50, 150, 200, 350))
+            screen.blit(choice1, (75, 175))
+            pygame.draw.rect(screen, (0, 0, 0), (300, 150, 200, 350))
+            screen.blit(choice2, (325, 175))
+            pygame.draw.rect(screen, (0, 0, 0), (550, 150, 200, 350))
+            screen.blit(choice3, (575, 175))
+            pygame.display.flip()
+            # Cap the frame rate
+            pygame.time.Clock().tick(30)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_1:
+                        print("1")
+                        upgrade.chosen_upgrade(choices[0])
+                        waiting_for_key = False
+                    elif event.key == pygame.K_2:
+                        print("2")
+                        upgrade.chosen_upgrade(choices[1])
+                        waiting_for_key = False
+                    elif event.key == pygame.K_3:
+                        print("3")
+                        upgrade.chosen_upgrade(choices[2])
+                        waiting_for_key = False
+
+    def upgrade_choices(choice):
+        font = pygame.font.SysFont("Arial", 24)
+        match choice:
+            case 1:
+                return font.render(f"Firerate upgrade", True, (255, 0, 0))
+            
+            case 2:
+                return font.render(f"Speed upgrade", True, (255, 0, 0))
+
+            case 3:
+                return font.render(f"Bullet speed upgrade", True, (255, 0, 0))
+
+            case 4:
+                return font.render(f"Pickup range upgrade", True, (255, 0, 0))
+
+            case 5:
+                return font.render(f"Xp rate upgrade", True, (255, 0, 0))
+
+            case 6:
+                return font.render(f"Pierce upgrade", True, (255, 0, 0))
+
+            case 7:
+                return font.render(f"Bullet size upgrade", True, (255, 0, 0))
 
     def find_closest_vampire():
         closest_distance = float('inf')
@@ -120,34 +181,16 @@ def run():
         score = font.render(f"Score {player.score:07}", True, (255, 0, 0))
         lvlup = font.render(f"Next level {player.nxt_lvl}", True, (255, 0, 0))
 
-        if player.score == player.nxt_lvl:
+        if player.score >= player.nxt_lvl:
             player.pts_for_lvlup += 1
             player.nxt_lvl = player.score + player.pts_for_lvlup
             levelup = True
 
-        draw()
-
         if levelup == True:
-            waiting_for_key = True
-            while waiting_for_key:
-                for event in pygame.event.get():
-                    if event.type == pygame.QUIT:
-                        pygame.quit()
-                        sys.exit()
-                    if event.type == pygame.KEYDOWN:
-                        if event.key == pygame.K_1:
-                            print("1")
-                            upgrade.firerate_upg()
-                            print(player.shoot_delay)
-                            waiting_for_key = False
-                        elif event.key == pygame.K_2:
-                            print("2")
-                            waiting_for_key = False
-                        elif event.key == pygame.K_3:
-                            print("3")
-                            waiting_for_key = False
-                draw()
+            draw_levelup()
             levelup = False
+        else:
+            draw()
 
     # Quit Pygame
     pygame.quit()
