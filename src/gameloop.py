@@ -50,21 +50,30 @@ def run():
     def draw_levelup():
         waiting_for_key = True
         choices = upgrade.pick_options()
-        print(choices)
         choice1 = upgrade_choices(choices[0])
         choice2 = upgrade_choices(choices[1])
         choice3 = upgrade_choices(choices[2])
+        slot1 = font.render(f"Press 1", True, (255, 0, 0))
+        slot2 = font.render(f"Press 2", True, (255, 0, 0))
+        slot3 = font.render(f"Press 3", True, (255, 0, 0))
+        upgrade_text = font.render(f"Upgrade", True, (255, 0, 0))
         while waiting_for_key:
             screen.fill(WHITE)
             all_sprites.draw(screen)
             screen.blit(score, (300, 0))
             screen.blit(lvlup, (50, 0))
             pygame.draw.rect(screen, (0, 0, 0), (50, 150, 200, 350))
-            screen.blit(choice1, (75, 175))
+            screen.blit(upgrade_text, (70, 150))
+            screen.blit(choice1, (85, 250))
+            screen.blit(slot1, (75, 400))
             pygame.draw.rect(screen, (0, 0, 0), (300, 150, 200, 350))
-            screen.blit(choice2, (325, 175))
+            screen.blit(upgrade_text, (320, 150))
+            screen.blit(choice2, (335, 250))
+            screen.blit(slot2, (325, 400))
             pygame.draw.rect(screen, (0, 0, 0), (550, 150, 200, 350))
-            screen.blit(choice3, (575, 175))
+            screen.blit(upgrade_text, (570, 150))
+            screen.blit(choice3, (585, 250))
+            screen.blit(slot3, (575, 400))
             pygame.display.flip()
             # Cap the frame rate
             pygame.time.Clock().tick(30)
@@ -90,25 +99,25 @@ def run():
         font = pygame.font.SysFont("Arial", 24)
         match choice:
             case 1:
-                return font.render(f"Firerate upgrade", True, (255, 0, 0))
+                return font.render(f"Firerate", True, (255, 0, 0))
             
             case 2:
-                return font.render(f"Speed upgrade", True, (255, 0, 0))
+                return font.render(f"Mov speed", True, (255, 0, 0))
 
             case 3:
-                return font.render(f"Bullet speed upgrade", True, (255, 0, 0))
+                return font.render(f"Blt speed", True, (255, 0, 0))
 
             case 4:
-                return font.render(f"Pickup range upgrade", True, (255, 0, 0))
+                return font.render(f"Pickup range", True, (255, 0, 0))
 
             case 5:
-                return font.render(f"Xp rate upgrade", True, (255, 0, 0))
+                return font.render(f"Xp rate", True, (255, 0, 0))
 
             case 6:
-                return font.render(f"Pierce upgrade", True, (255, 0, 0))
+                return font.render(f"Blt pierce", True, (255, 0, 0))
 
             case 7:
-                return font.render(f"Bullet size upgrade", True, (255, 0, 0))
+                return font.render(f"Blt size", True, (255, 0, 0))
 
     def find_closest_vampire():
         closest_distance = float('inf')
@@ -134,7 +143,8 @@ def run():
                 vampire = Vampire(player)
                 all_sprites.add(vampire)
                 vampires.add(vampire)
-                spawn_interval = int(2000-(math.sqrt(pygame.time.get_ticks())*5))//1
+                spawn_interval = max(int(2000-(math.sqrt(pygame.time.get_ticks())*5))//1, 5)
+                print(spawn_interval)
                 pygame.time.set_timer(SPAWN_VAMPIRE_EVENT, spawn_interval)
 
         # Update
@@ -160,9 +170,10 @@ def run():
             vampires.remove(vampire_hit)
             all_sprites.remove(vampire_hit)
             # Spawn pickup where vampire died
-            pickup = Pickup(vampire_hit.rect.centerx, vampire_hit.rect.centery, player.pickupradius)
-            all_sprites.add(pickup)
-            pickups.add(pickup)
+            if spawn_interval > 10:
+                pickup = Pickup(vampire_hit.rect.centerx, vampire_hit.rect.centery, player.pickupradius)
+                all_sprites.add(pickup)
+                pickups.add(pickup)
         for bullet in hits_bullet:
             bullet.pierce -= 1
             if bullet.pierce == 0:
