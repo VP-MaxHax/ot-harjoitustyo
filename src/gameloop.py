@@ -72,7 +72,6 @@ def run():
             screen.blit(choice3, (585, 250))
             screen.blit(slot3, (575, 400))
             pygame.display.flip()
-            # Cap the frame rate
             pygame.time.Clock().tick(30)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -131,7 +130,6 @@ def run():
     running = True
     levelup = False
     while running:
-        #print((2000-(math.sqrt(pygame.time.get_ticks())*5))//1)
         # Handle events
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -143,7 +141,7 @@ def run():
                 spawn_interval = max(int(2000-(math.sqrt(pygame.time.get_ticks())*5))//1, 5)
                 pygame.time.set_timer(SPAWN_VAMPIRE_EVENT, spawn_interval)
 
-        # Update
+        # Update sprites
         all_sprites.update()
         vamp = find_closest_vampire()
         bullet, shot = player.shoot(vamp)
@@ -157,11 +155,9 @@ def run():
         if hits:
             running = False
         
-        # Check for collisions between player and vampires
+        # Check for collisions between bullet and vampires
         hits_bullet = pygame.sprite.groupcollide(bullets, vampires, False, False)
         hits_vampire = pygame.sprite.groupcollide(vampires, bullets, True, False)
-        #print(hits_vampire)
-        #print(hits_bullet)
         for vampire_hit in hits_vampire:
             vampires.remove(vampire_hit)
             all_sprites.remove(vampire_hit)
@@ -173,9 +169,7 @@ def run():
         for bullet in hits_bullet:
             bullet.pierce -= 1
             if bullet.pierce == 0:
-                bullet.kill()
-
-        
+                bullet.kill()    
 
         # Check collisions between player and pickup
         for sprite in pickups:

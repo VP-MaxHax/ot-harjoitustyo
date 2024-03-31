@@ -67,6 +67,7 @@ class Vampire(pygame.sprite.Sprite):
         self.image.fill(RED)
         self.rect = self.image.get_rect()
         self.player = player
+        self.speed = 1
         self.spawn_on_edge()
 
     def spawn_on_edge(self):
@@ -87,23 +88,15 @@ class Vampire(pygame.sprite.Sprite):
     def update(self):
         dx = self.player.rect.centerx - self.rect.centerx
         dy = self.player.rect.centery - self.rect.centery
-        #print(self.player.rect.centerx, self.player.rect.centery)
         distance = math.sqrt(dx ** 2 + dy ** 2)
         
-        # Normalize the movement vector
         if distance != 0:
             dx /= distance
             dy /= distance
-
-        
-        # Set the speed of the vampire
-        speed = 1  # Adjust this value as needed
         
         # Move the vampire towards the player
-        #print(dx, dy)
-        self.rect.x += dx * speed
-        self.rect.y += dy * speed
-        #print(self.rect.x, self.rect.y)
+        self.rect.x += dx * self.speed
+        self.rect.y += dy * self.speed
 
 # Define the bullet class
 class Bullet(pygame.sprite.Sprite):
