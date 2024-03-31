@@ -1,6 +1,8 @@
 from invoke import task
 import platform
 
+# I do projecty mostly on Windows PC and pty does not work on my machine,
+# so I disable it on windows so i can get commands to run locally.
 def system():
     if platform.system() == "Windows":
         return False

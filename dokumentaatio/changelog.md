@@ -14,3 +14,11 @@ Täältä löytyvät kehitysviikkojen summatut lyhyet selitykset. Tarkemmat päi
 - Ensimmäisten testien kirjoitus.
 - Projektin dokumentaatioiden alustus.
 - Ohjelman jakaminen eri tiedostoihin.
+
+## Viikko 13
+
+- Hahmopäivitysten satunnaistaminen
+- Päivitysvalinnan visuaalinen ilme
+- Päivitysten testit
+- Pylint asennus ja määrittely
+- Koodin siivousta

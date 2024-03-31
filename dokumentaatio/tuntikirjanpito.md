@@ -29,3 +29,9 @@ Käytetyt tunnit 2h (yht. 11h)
 Satunnaiset päivitykset.
 
 Käytetyt tunnit 2h (yht. 13h)
+
+## 31.3.2024
+
+Päivitysten satunnaistaminen ja visuaalinen ui valinnoista pelaajalle. Pylint asennus ja koodin siivousta.
+
+Käytetyt tunnit 2h (yht. 15h)
