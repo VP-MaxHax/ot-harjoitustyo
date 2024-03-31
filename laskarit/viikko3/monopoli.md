@@ -1,18 +1,30 @@
 ```mermaid
- sequenceDiagram
-    create participant Laitehallinto
-    create participant Lataajalaite"Rautatientori"
-    Laitehallinto ->> Lataajalaite"Rautatientori":lisaa
-    create participant Lukijalaite"ratikka6"
-    Laitehallinto ->> Lukijalaite"ratikka6":lisaa
-    create participant Lukijalaite"bussi244"
-    Laitehallinto ->> Lukijalaite"bussi244":lisaa
-    create participant Matkakortti"Kalle"
-    Kioski ->> Matkakortti"Kalle":Osta matkakortti "Kalle"
-    Matkakortti"Kalle" ->> Lataajalaite"Rautatientori":Lataa arvoa 3€
-    Lataajalaite"Rautatientori" ->> Matkakortti"Kalle":Kasvata arvoa 3€
-    Matkakortti"Kalle" ->> Lukijalaite"ratikka6":Osta lipputyyppi 0
-    Lukijalaite"ratikka6" ->> Matkakortti"Kalle":True
-    Matkakortti"Kalle" ->> Lukijalaite"bussi244":Osta lipputyyppi 2
-    Lukijalaite"bussi244" ->> Matkakortti"Kalle":Flase
+ classDiagram
+    Monopolipeli "1" -- "2" Noppa
+    Monopolipeli "1" -- "1" Pelilauta
+    Pelilauta "1" -- "40" Ruutu
+    Ruutu "1" -- "1" Ruutu : seuraava
+    Ruutu "1" -- "0..8" Pelinappula
+    Pelinappula "1" -- "1" Pelaaja
+    Pelaaja "2..8" -- "1" Monopolipeli
+    Ruutu -- "1" Aloitusruutu
+    Ruutu -- "1" Vankila
+    Ruutu -- "3" Sattuma
+    Ruutu -- "3" Yhteismaa
+    Ruutu -- "4" Asemat
+    Ruutu -- "2" Laitokset
+    Ruutu -- "22" Kadut
+    Ruutu -- "1" Vapaapysäköinti
+    Ruutu -- "1" Mene vankilaan
+    Yhteismaa -- Korttipakka
+    Sattuma -- Korttipakka
+    Kadut -- "4" Talot
+    Kadut -- "1" Hotellit
+    Kadut -- Osakkeet
+    Asemat -- Osakkeet
+    Laitokset -- Osakkeet
+    Osakkeet -- Pelaaja
+    Talot -- Pelaaja
+    Hotellit -- Pelaaja
+    Korttipakka -- Pelaaja
 ```
