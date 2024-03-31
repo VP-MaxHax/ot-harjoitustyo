@@ -1,6 +1,6 @@
-import pygame
 import random
 import math
+import pygame
 
 # All entities done with the help of Chat-GPT
 
@@ -55,10 +55,11 @@ class Player(pygame.sprite.Sprite):
                 dy = closest_vampire.rect.centery - self.rect.centery
                 distance = math.sqrt(dx ** 2 + dy ** 2)
                 if distance != 0:
-                    bullet = Bullet(self.rect.centerx, self.rect.centery, dx / distance, dy / distance, self.bullet_speed, self.bullet_size, self.pierce)
+                    bullet = Bullet(self.rect.centerx, self.rect.centery,\
+                                     dx / distance, dy / distance, self.bullet_speed,\
+                                          self.bullet_size, self.pierce)
                     return bullet, True
         return None, False
-                
 # Define the vampire class
 class Vampire(pygame.sprite.Sprite):
     def __init__(self, player):
@@ -89,11 +90,9 @@ class Vampire(pygame.sprite.Sprite):
         dx = self.player.rect.centerx - self.rect.centerx
         dy = self.player.rect.centery - self.rect.centery
         distance = math.sqrt(dx ** 2 + dy ** 2)
-        
         if distance != 0:
             dx /= distance
             dy /= distance
-        
         # Move the vampire towards the player
         self.rect.x += dx * self.speed
         self.rect.y += dy * self.speed
@@ -115,7 +114,8 @@ class Bullet(pygame.sprite.Sprite):
         self.rect.x += self.speedx
         self.rect.y += self.speedy
         # Kill the bullet if it goes off the screen
-        if self.rect.bottom < 0 or self.rect.top > HEIGHT or self.rect.right < 0 or self.rect.left > WIDTH:
+        if self.rect.bottom < 0 or self.rect.top > HEIGHT\
+            or self.rect.right < 0 or self.rect.left > WIDTH:
             self.kill()
 
 # Define the pickup class

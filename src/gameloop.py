@@ -1,8 +1,8 @@
-import pygame
-from entities import Player, Vampire, Bullet, Pickup
-from upgrades import Upgrades
 import sys
 import math
+import pygame
+from entities import Player, Vampire, Pickup
+from upgrades import Upgrades
 
 # All of gameloop is done with help of Chat-GPT
 
@@ -11,12 +11,12 @@ def run():
     pygame.init()
 
     # Set up the screen
-    WIDTH, HEIGHT = 800, 600
-    screen = pygame.display.set_mode((WIDTH, HEIGHT))
+    width, height = 800, 600
+    screen = pygame.display.set_mode((width, height))
     pygame.display.set_caption("Vampire Survivor")
 
     # Define colors
-    WHITE = (255, 255, 255)
+    white = (255, 255, 255)
 
     # Create sprite groups
     all_sprites = pygame.sprite.Group()
@@ -32,12 +32,12 @@ def run():
     players.add(player)
 
     # Timer for vampire spawning
-    SPAWN_VAMPIRE_EVENT = pygame.USEREVENT + 1
+    spawn_vampire_event = pygame.USEREVENT + 1
     spawn_interval = 3000  # initial spawn interval in milliseconds
-    pygame.time.set_timer(SPAWN_VAMPIRE_EVENT, spawn_interval)
+    pygame.time.set_timer(spawn_vampire_event, spawn_interval)
 
     def draw():
-        screen.fill(WHITE)
+        screen.fill(white)
         all_sprites.draw(screen)
         screen.blit(score, (300, 0))
         screen.blit(lvlup, (50, 0))
@@ -50,12 +50,12 @@ def run():
         choice1 = upgrade_choices(choices[0])
         choice2 = upgrade_choices(choices[1])
         choice3 = upgrade_choices(choices[2])
-        slot1 = font.render(f"Press 1", True, (255, 0, 0))
-        slot2 = font.render(f"Press 2", True, (255, 0, 0))
-        slot3 = font.render(f"Press 3", True, (255, 0, 0))
-        upgrade_text = font.render(f"Upgrade", True, (255, 0, 0))
+        slot1 = font.render("Press 1", True, (255, 0, 0))
+        slot2 = font.render("Press 2", True, (255, 0, 0))
+        slot3 = font.render("Press 3", True, (255, 0, 0))
+        upgrade_text = font.render("Upgrade", True, (255, 0, 0))
         while waiting_for_key:
-            screen.fill(WHITE)
+            screen.fill(white)
             all_sprites.draw(screen)
             screen.blit(score, (300, 0))
             screen.blit(lvlup, (50, 0))
@@ -95,25 +95,25 @@ def run():
         font = pygame.font.SysFont("Arial", 24)
         match choice:
             case 1:
-                return font.render(f"Firerate", True, (255, 0, 0))
-            
+                return font.render("Firerate", True, (255, 0, 0))
+
             case 2:
-                return font.render(f"Mov speed", True, (255, 0, 0))
+                return font.render("Mov speed", True, (255, 0, 0))
 
             case 3:
-                return font.render(f"Blt speed", True, (255, 0, 0))
+                return font.render("Blt speed", True, (255, 0, 0))
 
             case 4:
-                return font.render(f"Pickup range", True, (255, 0, 0))
+                return font.render("Pickup range", True, (255, 0, 0))
 
             case 5:
-                return font.render(f"Xp rate", True, (255, 0, 0))
+                return font.render("Xp rate", True, (255, 0, 0))
 
             case 6:
-                return font.render(f"Blt pierce", True, (255, 0, 0))
+                return font.render("Blt pierce", True, (255, 0, 0))
 
             case 7:
-                return font.render(f"Blt size", True, (255, 0, 0))
+                return font.render("Blt size", True, (255, 0, 0))
 
     def find_closest_vampire():
         closest_distance = float('inf')
@@ -134,12 +134,12 @@ def run():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            elif event.type == SPAWN_VAMPIRE_EVENT:
+            elif event.type == spawn_vampire_event:
                 vampire = Vampire(player)
                 all_sprites.add(vampire)
                 vampires.add(vampire)
                 spawn_interval = max(int(2000-(math.sqrt(pygame.time.get_ticks())*5))//1, 5)
-                pygame.time.set_timer(SPAWN_VAMPIRE_EVENT, spawn_interval)
+                pygame.time.set_timer(spawn_vampire_event, spawn_interval)
 
         # Update sprites
         all_sprites.update()
@@ -154,7 +154,7 @@ def run():
         hits = pygame.sprite.spritecollide(player, vampires, False)
         if hits:
             running = False
-        
+
         # Check for collisions between bullet and vampires
         hits_bullet = pygame.sprite.groupcollide(bullets, vampires, False, False)
         hits_vampire = pygame.sprite.groupcollide(vampires, bullets, True, False)
@@ -163,13 +163,15 @@ def run():
             all_sprites.remove(vampire_hit)
             if spawn_interval > 10:
                 # Spawn pickup where vampire died
-                pickup = Pickup(vampire_hit.rect.centerx, vampire_hit.rect.centery, player.pickupradius)
+                pickup = Pickup(vampire_hit.rect.centerx,\
+                                 vampire_hit.rect.centery,\
+                                      player.pickupradius)
                 all_sprites.add(pickup)
                 pickups.add(pickup)
         for bullet in hits_bullet:
             bullet.pierce -= 1
             if bullet.pierce == 0:
-                bullet.kill()    
+                bullet.kill()
 
         # Check collisions between player and pickup
         for sprite in pickups:
@@ -187,12 +189,11 @@ def run():
             player.nxt_lvl = player.score + player.pts_for_lvlup
             levelup = True
 
-        if levelup == True:
+        if levelup:
             draw_levelup()
             levelup = False
         else:
             draw()
 
-    # Quit Pygame
     pygame.quit()
     sys.exit()

@@ -1,6 +1,6 @@
 import random
 
-# Define upgrades    
+# Define upgrades
 class Upgrades:
     def __init__(self, player):
         self.upg = []
@@ -31,12 +31,12 @@ class Upgrades:
     def pick_options(self):
         picked_options = random.sample(self.options, 3)
         return picked_options
-    
+
     def chosen_upgrade(self, chosen):
         match chosen:
             case 1:
                 self.firerate_upg()
-            
+
             case 2:
                 self.speed_upg()
 
