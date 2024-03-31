@@ -36,15 +36,12 @@ def run():
     spawn_interval = 3000  # initial spawn interval in milliseconds
     pygame.time.set_timer(SPAWN_VAMPIRE_EVENT, spawn_interval)
 
-        # Draw
     def draw():
         screen.fill(WHITE)
         all_sprites.draw(screen)
         screen.blit(score, (300, 0))
         screen.blit(lvlup, (50, 0))
-        # Levelup choices
         pygame.display.flip()
-        # Cap the frame rate
         pygame.time.Clock().tick(30)
 
     def draw_levelup():
@@ -144,7 +141,6 @@ def run():
                 all_sprites.add(vampire)
                 vampires.add(vampire)
                 spawn_interval = max(int(2000-(math.sqrt(pygame.time.get_ticks())*5))//1, 5)
-                print(spawn_interval)
                 pygame.time.set_timer(SPAWN_VAMPIRE_EVENT, spawn_interval)
 
         # Update
@@ -169,8 +165,8 @@ def run():
         for vampire_hit in hits_vampire:
             vampires.remove(vampire_hit)
             all_sprites.remove(vampire_hit)
-            # Spawn pickup where vampire died
             if spawn_interval > 10:
+                # Spawn pickup where vampire died
                 pickup = Pickup(vampire_hit.rect.centerx, vampire_hit.rect.centery, player.pickupradius)
                 all_sprites.add(pickup)
                 pickups.add(pickup)
