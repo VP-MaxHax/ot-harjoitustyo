@@ -11,10 +11,11 @@ Tähän mennessä olen heitellyt ideoita yhteen (game.py) tiedostoon ja katsonut
 
 Sovelluksessa on aluksi päävalikko josta pelaaja voi aloittaa pelin. Pelinäkymässä ollaan kunnes peli päättyy jolloin palataan päävalikkoon tai aloitetaan uusi peli.
 
-## Pelin toiminnallisuuksia
+## Pelin toteutettuja toiminnallisuuksia
 
-- Pelaaja voi liikkua nuolinäppäimillä.
-- Kun pelaaja saa tarpeeksi pisteitä voi hän päivittää kykyjään satunnaisesti valituista päivitysvaihtoehdoista.
+- Pelaaja voi liikkua nuolinäppäimillä. (“tehty”)
+- Kun pelaaja saa tarpeeksi pisteitä voi hän päivittää kykyjään satunnaisesti valituista päivitysvaihtoehdoista. (“tehty”)
+- Päävalikko (“tehty”)
 
 ## Jatkokehitysideoita
 

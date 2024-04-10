@@ -1,3 +1,4 @@
-import gameloop
+from gameloop import Game
 
-gameloop.run()
+game = Game()
+game.run()

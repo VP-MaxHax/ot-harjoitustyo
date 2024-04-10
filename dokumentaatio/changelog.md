@@ -5,7 +5,6 @@ Täältä löytyvät kehitysviikkojen summatut lyhyet selitykset. Tarkemmat päi
 ## Viikko 11
 
 -Projektin aloitus.
-
 -Pelin perus koodin kehittäminen Chat-GPTn avustuksella.
 
 ## Viikko 12
@@ -22,3 +21,7 @@ Täältä löytyvät kehitysviikkojen summatut lyhyet selitykset. Tarkemmat päi
 - Päivitysten testit
 - Pylint asennus ja määrittely
 - Koodin siivousta
+
+## Viikko 14
+
+- Hahmopäivitysten visuaalinen ilme

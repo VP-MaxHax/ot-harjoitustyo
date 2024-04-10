@@ -1,32 +1,34 @@
 import random
 
 # Define upgrades
+
+
 class Upgrades:
     def __init__(self, player):
         self.upg = []
-        self.options = [1,2,3,4,5,6,7]
+        self.options = [1, 2, 3, 4, 5, 6, 7]
         self.player = player
 
     def firerate_upg(self):
-        self.player.shoot_delay = int(self.player.shoot_delay*0.9)
+        self.player.stats.shoot_delay = int(self.player.stats.shoot_delay*0.9)
 
     def speed_upg(self):
-        self.player.mv_speed += 1
+        self.player.stats.mv_speed += 1
 
     def bult_spd_upg(self):
-        self.player.bullet_speed += 3
+        self.player.stats.bullet_speed += 3
 
     def pickup_upg(self):
-        self.player.pickupradius += 50
+        self.player.stats.pickupradius += 50
 
     def exprate_upg(self):
-        self.player.exprate += 1
+        self.player.stats.exprate += 1
 
     def blt_prs_upg(self):
-        self.player.pierce += 1
+        self.player.stats.pierce += 1
 
     def blt_sz_upg(self):
-        self.player.bullet_size += 2
+        self.player.stats.bullet_size += 2
 
     def pick_options(self):
         picked_options = random.sample(self.options, 3)
