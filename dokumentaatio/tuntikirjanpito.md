@@ -35,3 +35,7 @@ Käytetyt tunnit 2h (yht. 13h)
 Päivitysten satunnaistaminen ja visuaalinen ui valinnoista pelaajalle. Pylint asennus ja koodin siivousta.
 
 Käytetyt tunnit 2h (yht. 15h)
+
+## 10.4.2024
+
+Peliin lisätty päävalikko josta pääsee peliin sisälle. Koodia refaktoroitu kattavasti noudattaman pylint määreitä. Upgrades luokan testejä laajennettu.

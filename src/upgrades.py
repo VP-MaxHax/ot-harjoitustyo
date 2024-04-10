@@ -38,21 +38,34 @@ class Upgrades:
         match chosen:
             case 1:
                 self.firerate_upg()
+                change = True
 
             case 2:
                 self.speed_upg()
+                change = True
 
             case 3:
                 self.bult_spd_upg()
+                change = True
 
             case 4:
                 self.pickup_upg()
+                change = True
 
             case 5:
                 self.exprate_upg()
+                change = True
 
             case 6:
                 self.blt_prs_upg()
+                change = True
 
             case 7:
                 self.blt_sz_upg()
+                change = True
+
+            case _:
+                # Default case if chosen doesn't match any of the above cases
+                # Handle the default behavior here or simply pass if not needed
+                change = False
+        return change

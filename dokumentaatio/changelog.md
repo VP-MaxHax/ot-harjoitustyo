@@ -25,3 +25,9 @@ Täältä löytyvät kehitysviikkojen summatut lyhyet selitykset. Tarkemmat päi
 ## Viikko 14
 
 - Hahmopäivitysten visuaalinen ilme
+
+## Viikko 15
+
+- Päävalikko
+- Refaktorointia
+- Upgrade luokan testejä
