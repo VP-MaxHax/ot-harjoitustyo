@@ -31,3 +31,4 @@ Täältä löytyvät kehitysviikkojen summatut lyhyet selitykset. Tarkemmat päi
 - Päävalikko
 - Refaktorointia
 - Upgrade luokan testejä
+- Arkkitehtuurin kuvaus

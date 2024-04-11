@@ -39,3 +39,11 @@ Käytetyt tunnit 2h (yht. 15h)
 ## 10.4.2024
 
 Peliin lisätty päävalikko josta pääsee peliin sisälle. Koodia refaktoroitu kattavasti noudattaman pylint määreitä. Upgrades luokan testejä laajennettu.
+
+Käytetyt tunnit 3h (yht. 18h)
+
+## 11.4.2024
+
+Pakkausrakenne kaavion tekeminen ja sen linkittäminen "arkkitehtuuri.md" tiedostoon.
+
+Käytetyt tunnit 1h (yht. 19h)
