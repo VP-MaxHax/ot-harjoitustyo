@@ -138,7 +138,8 @@ class Game:
                 break
             self.update_sprites()
             if not self.check_collisions():
-                break
+                self.gameover()
+                return
             self.update_score_display()
             self.handle_levelup(levelup)
         pygame.quit()
@@ -163,6 +164,22 @@ class Game:
             int(2000-(math.sqrt(pygame.time.get_ticks())*5))//1, 5)
         pygame.time.set_timer(self.spawn_vampire_event, self.spawn_interval)
 
+    def gameover(self):
+        font = pygame.font.SysFont("Arial", 40)
+        self.screen.blit(font.render("You died!", True, (255, 0, 0)), (300, 100))
+        self.screen.blit(font.render("Press ENTER to go back to main menu.", True, (255, 0, 0)), (100, 500))
+        gameover = True
+        while gameover:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RETURN:
+                        gameover = False
+            pygame.display.flip()
+            pygame.time.Clock().tick(30)
+
     # Update sprites
     def update_sprites(self):
         self.all_sprites.update()
@@ -174,10 +191,9 @@ class Game:
 
     # Check collisions
     def check_collisions(self):
-        running = True
         hits = pygame.sprite.spritecollide(self.player, self.vampires, False)
         if hits:
-            running = False
+            return False
         hits_bullet = pygame.sprite.groupcollide(
             self.bullets, self.vampires, False, False)
         hits_vampire = pygame.sprite.groupcollide(
@@ -187,7 +203,7 @@ class Game:
         for bullet in hits_bullet:
             self.handle_bullet_hit(bullet)
         self.handle_pickup_collisions()
-        return running
+        return True
 
     # Handle pickup collisions
     def handle_pickup_collisions(self):

@@ -11,15 +11,16 @@ screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Vampire Survivor")
 white = (255, 255, 255)
 black = (0, 0, 0)
-game = Game()
 RUNNING = True
 while RUNNING:
     # Handle events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            RUNNING = False
+            pygame.quit()
+            sys.exit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_F2:
+                game = Game()
                 game.run()
         screen.fill(black)
         font = pygame.font.SysFont("Arial", 100)

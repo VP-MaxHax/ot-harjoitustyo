@@ -47,3 +47,9 @@ Käytetyt tunnit 3h (yht. 18h)
 Pakkausrakenne kaavion tekeminen ja sen linkittäminen "arkkitehtuuri.md" tiedostoon.
 
 Käytetyt tunnit 1h (yht. 19h)
+
+## 15.4.2024
+
+Päävalikon varsinainen käyttöönotto (unohtui aikaisemmin ohjelmalogiikassa vaihtaa tähän), sekä "game over" ruutu josta pääsee takaisin päävalikkoon pelin loppuessa. Pajassa neuvojen kysely ensi viikon testejä varten.
+
+Käytetyt tunnit 1h (yht. 20h)

@@ -2,19 +2,19 @@
 
 Täältä löytyvät kehitysviikkojen summatut lyhyet selitykset. Tarkemmat päiväkohtaiset muutokset löytyvät tuntikirjanpidosta.
 
-## Viikko 11
+## Viikko 1
 
 -Projektin aloitus.
 -Pelin perus koodin kehittäminen Chat-GPTn avustuksella.
 
-## Viikko 12
+## Viikko 2
 
 - Projektin virtuaaliympäristön alustus.
 - Ensimmäisten testien kirjoitus.
 - Projektin dokumentaatioiden alustus.
 - Ohjelman jakaminen eri tiedostoihin.
 
-## Viikko 13
+## Viikko 3
 
 - Hahmopäivitysten satunnaistaminen
 - Päivitysvalinnan visuaalinen ilme
@@ -22,13 +22,14 @@ Täältä löytyvät kehitysviikkojen summatut lyhyet selitykset. Tarkemmat päi
 - Pylint asennus ja määrittely
 - Koodin siivousta
 
-## Viikko 14
+## Viikko 3.5 (pääsiäinen)
 
 - Hahmopäivitysten visuaalinen ilme
 
-## Viikko 15
+## Viikko 4
 
 - Päävalikko
 - Refaktorointia
 - Upgrade luokan testejä
 - Arkkitehtuurin kuvaus
+- GameOver ruutu ja Uuden pelin aloitus poistumatta ohjelmasta
