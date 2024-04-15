@@ -24,7 +24,7 @@ while RUNNING:
         screen.fill(black)
         font = pygame.font.SysFont("Arial", 100)
         screen.blit(font.render("Vampire Survivor",
-                    True, (255, 0, 0)), (100, 100))
+                    True, (255, 0, 0)), (50, 100))
         font = pygame.font.SysFont("Arial", 30)
         screen.blit(font.render("Press F2 to start game",
                     True, (255, 0, 0)), (285, 400))

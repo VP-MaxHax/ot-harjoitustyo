@@ -12,7 +12,7 @@ def system():
 
 @task
 def start(ctx):
-    ctx.run("python3 src/index.py", pty=system())
+    ctx.run("python3 src/mainmenu.py", pty=system())
 
 @task
 def test(ctx):
