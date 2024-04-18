@@ -164,21 +164,28 @@ class Game:
             int(2000-(math.sqrt(pygame.time.get_ticks())*5))//1, 5)
         pygame.time.set_timer(self.spawn_vampire_event, self.spawn_interval)
 
-    def gameover(self):
+    def gameover(self, test=False):
         font = pygame.font.SysFont("Arial", 40)
         self.screen.blit(font.render("You died!", True, (255, 0, 0)), (300, 100))
         self.screen.blit(font.render("Press ENTER to go back to main menu.",
                                       True, (255, 0, 0)), (100, 500))
         gameover = True
+        if test is True:
+            event = pygame.event.Event(pygame.KEYDOWN, key=pygame.K_RETURN)
+            pygame.event.post(event)
         while gameover:
             for event in pygame.event.get():
+                print(event)
                 gameover = self.check_gameover_events(event)
             pygame.display.flip()
             pygame.time.Clock().tick(30)
+        return "GameOver"
 
-    def check_gameover_events(self, event):
+    def check_gameover_events(self, event, test=False):
         if event.type == pygame.QUIT:
             pygame.quit()
+            if test is True:
+                return "Palautetaan vain testauksessa"
             sys.exit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RETURN:
