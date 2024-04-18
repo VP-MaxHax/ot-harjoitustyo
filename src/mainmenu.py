@@ -15,13 +15,13 @@ RUNNING = True
 while RUNNING:
     # Handle events
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_F2:
                 game = Game()
                 game.run()
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
         screen.fill(black)
         font = pygame.font.SysFont("Arial", 100)
         screen.blit(font.render("Vampire Survivor",

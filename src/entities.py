@@ -24,21 +24,20 @@ class Player(pygame.sprite.Sprite):
         self.stats = PlayerStats()
 
 
-    def update(self):
+    def update(self, keypress=None):
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT]:
+        if keys[pygame.K_LEFT] or keypress == "left":
             self.rect.x -= self.stats.mv_speed
-        if keys[pygame.K_RIGHT]:
+        if keys[pygame.K_RIGHT] or keypress == "right":
             self.rect.x += self.stats.mv_speed
-        if keys[pygame.K_UP]:
+        if keys[pygame.K_UP] or keypress == "up":
             self.rect.y -= self.stats.mv_speed
-        if keys[pygame.K_DOWN]:
+        if keys[pygame.K_DOWN] or keypress == "down":
             self.rect.y += self.stats.mv_speed
 
     def shoot(self, closest_vampire):
         # Shoot towards the closest vampire
         now = pygame.time.get_ticks()
-        print(now - self.stats.last_shot, self.stats.shoot_delay)
         if now - self.stats.last_shot > self.stats.shoot_delay:
             self.stats.last_shot = now
             if closest_vampire:
@@ -78,8 +77,9 @@ class Vampire(pygame.sprite.Sprite):
         self.speed = 1
         self.spawn_on_edge()
 
-    def spawn_on_edge(self):
-        side = random.choice(["top", "bottom", "left", "right"])
+    def spawn_on_edge(self, side=None):
+        if side is None:
+            side = random.choice(["top", "bottom", "left", "right"])
         if side == "top":
             self.rect.centerx = random.randint(0, WIDTH)
             self.rect.top = 0

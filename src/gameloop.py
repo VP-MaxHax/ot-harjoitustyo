@@ -167,18 +167,23 @@ class Game:
     def gameover(self):
         font = pygame.font.SysFont("Arial", 40)
         self.screen.blit(font.render("You died!", True, (255, 0, 0)), (300, 100))
-        self.screen.blit(font.render("Press ENTER to go back to main menu.", True, (255, 0, 0)), (100, 500))
+        self.screen.blit(font.render("Press ENTER to go back to main menu.",
+                                      True, (255, 0, 0)), (100, 500))
         gameover = True
         while gameover:
             for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_RETURN:
-                        gameover = False
+                gameover = self.check_gameover_events(event)
             pygame.display.flip()
             pygame.time.Clock().tick(30)
+
+    def check_gameover_events(self, event):
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RETURN:
+                return False
+        return True
 
     # Update sprites
     def update_sprites(self):
