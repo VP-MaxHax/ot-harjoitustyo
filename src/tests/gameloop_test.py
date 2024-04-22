@@ -35,7 +35,7 @@ class TestGameloop(unittest.TestCase):
     def test_gameover_events_to_quit_the_game(self):
         event = pygame.event.Event(pygame.QUIT)
         running = self.game.check_gameover_events(event, True)
-        self.assertEqual(running, "Palautetaan vain testauksessa")
+        self.assertEqual(running, "Returned only in testing")
 
     def test_gameover_events_to_continue_to_menu(self):
         event = pygame.event.Event(pygame.KEYDOWN, key=pygame.K_RETURN)

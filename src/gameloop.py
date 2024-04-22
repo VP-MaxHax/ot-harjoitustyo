@@ -68,15 +68,12 @@ class Game:
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_1:
-                    print("1")
                     self.upgrade.chosen_upgrade(choices[0])
                     waiting_for_key = False
                 elif event.key == pygame.K_2:
-                    print("2")
                     self.upgrade.chosen_upgrade(choices[1])
                     waiting_for_key = False
                 elif event.key == pygame.K_3:
-                    print("3")
                     self.upgrade.chosen_upgrade(choices[2])
                     waiting_for_key = False
         return waiting_for_key
@@ -185,7 +182,7 @@ class Game:
         if event.type == pygame.QUIT:
             pygame.quit()
             if test is True:
-                return "Palautetaan vain testauksessa"
+                return "Returned only in testing"
             sys.exit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RETURN:
