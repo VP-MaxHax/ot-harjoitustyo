@@ -33,3 +33,10 @@ Täältä löytyvät kehitysviikkojen summatut lyhyet selitykset. Tarkemmat päi
 - Upgrade luokan testejä
 - Arkkitehtuurin kuvaus
 - GameOver ruutu ja Uuden pelin aloitus poistumatta ohjelmasta
+
+## Viikko 5
+
+- Profiilin valinta
+- Testikattavuuden laajennusta
+- Sovelluslogiikan lisäys dokumentaatioon
+- Ensimmäinen release

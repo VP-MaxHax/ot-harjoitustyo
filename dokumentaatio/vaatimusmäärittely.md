@@ -16,6 +16,7 @@ Sovelluksessa on aluksi päävalikko josta pelaaja voi aloittaa pelin. Pelinäky
 - Pelaaja voi liikkua nuolinäppäimillä. (“tehty”)
 - Kun pelaaja saa tarpeeksi pisteitä voi hän päivittää kykyjään satunnaisesti valituista päivitysvaihtoehdoista. (“tehty”)
 - Päävalikko (“tehty”)
+- Pelaajaprofiilin valinta päävalikosta (“tehty”)
 
 ## Jatkokehitysideoita
 

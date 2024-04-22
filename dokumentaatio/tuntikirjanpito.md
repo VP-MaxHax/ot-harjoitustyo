@@ -53,3 +53,15 @@ Käytetyt tunnit 1h (yht. 19h)
 Päävalikon varsinainen käyttöönotto (unohtui aikaisemmin ohjelmalogiikassa vaihtaa tähän), sekä "game over" ruutu josta pääsee takaisin päävalikkoon pelin loppuessa. Pajassa neuvojen kysely ensi viikon testejä varten.
 
 Käytetyt tunnit 1h (yht. 20h)
+
+## 18.4.2024
+
+Entities ja Game luokkien testejä.
+
+Käytetyt tunnit 3h (yht. 23h)
+
+## 22.4.2024
+
+Profiilin valinnan ensimmäinen versio. Dokumentaation päivittämistä. Ensimmäinen release.
+
+Käytetyt tunnit 2h (yht. 25h)
