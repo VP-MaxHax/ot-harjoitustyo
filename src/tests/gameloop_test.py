@@ -91,5 +91,60 @@ class TestGameloop(unittest.TestCase):
         value = self.game.upgrade_choices(7)
         font = pygame.font.SysFont("Arial", 24)
         self.assertEqual(pygame.image.tostring(value, 'RGBA'),
-                         pygame.image.tostring(font.render("Blt size", True, (255, 0, 0)), 'RGBA'))  
+                         pygame.image.tostring(font.render("Blt size", True, (255, 0, 0)), 'RGBA')) 
         
+    def test_wait_for_lvlup_confirmation_no_event(self):
+        value = self.game.level_up_check_event([1,2,3])
+        self.assertEqual(value, True)
+        
+    def test_wait_for_lvlup_confirmation_k1_event(self):
+        value = self.game.level_up_check_event([1,2,3], True, pygame.event.Event(pygame.KEYDOWN, key=pygame.K_1))
+        self.assertEqual(value, False)
+
+    def test_wait_for_lvlup_confirmation_k2_event(self):
+        value = self.game.level_up_check_event([1,2,3], True, pygame.event.Event(pygame.KEYDOWN, key=pygame.K_2))
+        self.assertEqual(value, False)
+
+    def test_wait_for_lvlup_confirmation_k3_event(self):
+        value = self.game.level_up_check_event([1,2,3], True, pygame.event.Event(pygame.KEYDOWN, key=pygame.K_3))
+        self.assertEqual(value, False)
+
+    def test_wait_for_lvlup_confirmation_k4_event(self):
+        value = self.game.level_up_check_event([1,2,3], True, pygame.event.Event(pygame.KEYDOWN, key=pygame.K_4))
+        self.assertEqual(value, True)
+
+    def test_wait_for_lvlup_confirmation_quit_event(self):
+        value = self.game.level_up_check_event([1,2,3], True, pygame.event.Event(pygame.QUIT))
+        self.assertEqual(value, "Returned only in testing")
+
+    def test_choose_closest_vampire_from_two(self):
+        vampire1 = Vampire(self.player)
+        vampire1.rect.x = 100
+        vampire1.rect.y = 300
+        self.game.vampires.add(vampire1)
+        vampire2 = Vampire(self.player)
+        vampire2.rect.x = 200
+        vampire2.rect.y = 300
+        self.game.vampires.add(vampire2)
+        closest = self.game.find_closest_vampire()
+        self.assertEqual((closest.rect.x, closest.rect.y), (200,300))
+
+    def test_choose_closest_vampire_from_many(self):
+        vampire1 = Vampire(self.player)
+        vampire1.rect.x = 600
+        vampire1.rect.y = 300
+        self.game.vampires.add(vampire1)
+        vampire2 = Vampire(self.player)
+        vampire2.rect.x = 200
+        vampire2.rect.y = 300
+        self.game.vampires.add(vampire2)
+        vampire3 = Vampire(self.player)
+        vampire3.rect.x = 400
+        vampire3.rect.y = 125
+        self.game.vampires.add(vampire3)
+        vampire4 = Vampire(self.player)
+        vampire4.rect.x = 400
+        vampire4.rect.y = 600
+        self.game.vampires.add(vampire4)
+        closest = self.game.find_closest_vampire()
+        self.assertEqual((closest.rect.x, closest.rect.y), (400,125))

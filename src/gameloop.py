@@ -60,11 +60,15 @@ class Game:
             pygame.time.Clock().tick(30)
             waiting_for_key = self.level_up_check_event(choices)
 
-    def level_up_check_event(self, choices):
+    def level_up_check_event(self, choices, test=False, keypress=None):
         waiting_for_key = True
+        if test is True:
+            pygame.event.post(keypress)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
+                if test is True:
+                    return "Returned only in testing"
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_1:
@@ -172,7 +176,6 @@ class Game:
             pygame.event.post(event)
         while gameover:
             for event in pygame.event.get():
-                print(event)
                 gameover = self.check_gameover_events(event)
             pygame.display.flip()
             pygame.time.Clock().tick(30)
