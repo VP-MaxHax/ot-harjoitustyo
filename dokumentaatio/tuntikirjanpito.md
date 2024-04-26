@@ -65,3 +65,15 @@ Käytetyt tunnit 3h (yht. 23h)
 Profiilin valinnan ensimmäinen versio. Dokumentaation päivittämistä. Ensimmäinen release.
 
 Käytetyt tunnit 2h (yht. 25h)
+
+## 24.4.2024
+
+Testikattavuuden nostoa.
+
+Käytetyt tunnit 1h (yht. 26h)
+
+## 26.4.2024
+
+Meta upgrade tietokannan alustus. Meta_upgrades kansioo Meta luokka hallinnoimaan tietokannan noutoa, päivitystä sekä päivitysten hallintaa varten.
+
+Käytetyt tunnit 4h (yht. 30h)

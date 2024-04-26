@@ -17,11 +17,11 @@ Sovelluksessa on aluksi päävalikko josta pelaaja voi aloittaa pelin. Pelinäky
 - Kun pelaaja saa tarpeeksi pisteitä voi hän päivittää kykyjään satunnaisesti valituista päivitysvaihtoehdoista. (“tehty”)
 - Päävalikko (“tehty”)
 - Pelaajaprofiilin valinta päävalikosta (“tehty”)
+- Tietokantaan tallennettavat käyttäjäprofiilit (“tehty”)
+- Metaprogressio (“tehty”)
 
 ## Jatkokehitysideoita
 
-- Tietokantaan tallennettavat käyttäjäprofiilit.
-- Metaprogressio.
 - Lisää päivityksiä.
 - Eri tasoisia päivityksiä.
 - Lisää pelattavia hahmoja eri aseilla.
