@@ -8,7 +8,8 @@ class TestGameloop(unittest.TestCase):
     def setUp(self):
         self.player = Player()
         self.upgrade = Upgrades(self.player)
-        self.game = Game()
+        screen = pygame.display.set_mode((800, 600))
+        self.game = Game("test", screen)
 
     def test_spawn_a_vampire(self):
         self.game.spawn_vampire()

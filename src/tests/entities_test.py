@@ -1,14 +1,17 @@
 import unittest
+import pygame
 from upgrades import Upgrades
 from entities import Player, Vampire, Bullet, Pickup
 from gameloop import Game
+from meta_upgrades import Meta
 
 
 class TestEntities(unittest.TestCase):
     def setUp(self):
         self.player = Player() # Player always start at the middle of the board (400, 300)
         self.upgrade = Upgrades(self.player)
-        self.game = Game()
+        screen = pygame.display.set_mode((800, 600))
+        self.game = Game("test", screen)
 
     def test_vampire_moves_correctly_towards_player_from_left(self):
         vampire = Vampire(self.player)
