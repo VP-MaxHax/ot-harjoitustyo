@@ -42,6 +42,9 @@ class Meta:
             values = (f"gamer{i+1}", "0000000")
             cursor.execute(insert_row_sql, values)
             conn.commit()
+        values = ("test", "0000000")
+        cursor.execute(insert_row_sql, values)
+        conn.commit()
         conn.close()
 
     def apply_meta_upgrades(self):
@@ -99,6 +102,3 @@ class Meta:
         WHERE name = ?;
         '''
         cursor.execute(query, ("test",))
-
-m = Meta("aaa", "gamer1")  
-print(m.database_exists("meta.db"))

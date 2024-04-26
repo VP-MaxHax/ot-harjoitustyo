@@ -15,7 +15,6 @@ class Game:
         # Set up the screen
         self.width, self.height = 800, 600
         self.screen = screen
-        pygame.display.set_caption("Vampire Survivor")
         # Define colors
         self.white = (255, 255, 255)
         # Create sprite groups
@@ -32,11 +31,15 @@ class Game:
         self.meta = Meta(self.upgrade, player_profile)
         self.meta.apply_meta_upgrades()
         # Timer for vampire spawning
-        self.spawn_vampire_event = pygame.USEREVENT + 1
-        self.spawn_interval = 3000  # initial spawn interval in milliseconds
+        self.spawn_vampire_event, self.spawn_interval = self.setup_vampire_spawn()
         pygame.time.set_timer(self.spawn_vampire_event, self.spawn_interval)
         self.score = None
         self.lvlup = None
+
+    def setup_vampire_spawn(self):
+        self.spawn_vampire_event = pygame.USEREVENT + 1
+        self.spawn_interval = 3000  # initial spawn interval in milliseconds
+        return self.spawn_vampire_event, self.spawn_interval
 
     def draw(self):
         self.screen.fill(self.white)
@@ -179,63 +182,42 @@ class Game:
 
     def draw_metaupgrade_choices(self):
         choice = None
-        metadata = self.meta.meta_status
         while choice is None:
             self.screen.fill(self.white)
             self.all_sprites.draw(self.screen)
             font = pygame.font.SysFont("Arial", 40)
             self.screen.blit(font.render("Congratulations!", True, (0, 0, 0)), (300, 100))
             font = pygame.font.SysFont("Arial", 24)
-            self.screen.blit(font.render("You got to the endgame and now you can choose a meta upgrade and return to menu.",
+            self.screen.blit(font.render(\
+            "You got to the endgame and now you can choose a meta upgrade and return to menu.",
                                         True, (0, 0, 0)), (50, 200))
             self.screen.blit(font.render("Maximum level of meta uprages is 9",
                                         True, (0, 00, 0)), (200, 300))
-            pygame.draw.rect(self.screen, (0, 0, 0), (25, 400, 105, 180))
-            pygame.draw.rect(self.screen, (0, 0, 0), (135, 400, 105, 180))
-            pygame.draw.rect(self.screen, (0, 0, 0), (245, 400, 105, 180))
-            pygame.draw.rect(self.screen, (0, 0, 0), (355, 400, 105, 180))
-            pygame.draw.rect(self.screen, (0, 0, 0), (465, 400, 105, 180))
-            pygame.draw.rect(self.screen, (0, 0, 0), (575, 400, 105, 180))
-            pygame.draw.rect(self.screen, (0, 0, 0), (685, 400, 105, 180))
-            self.screen.blit(font.render("Press 1", True, (255, 255, 0)), (30, 410))
-            self.screen.blit(font.render("Upgrade:", True, (255, 255, 0)), (30, 430))
-            self.screen.blit(font.render("Firerate", True, (255, 255, 0)), (30, 460))
-            self.screen.blit(font.render("Current lvl:", True, (255, 255, 0)), (30, 490))
-            self.screen.blit(font.render(f"{metadata[0]}", True, (255, 255, 0)), (30, 520))
-            self.screen.blit(font.render("Press 2", True, (255, 255, 0)), (140, 410))
-            self.screen.blit(font.render("Upgrade:", True, (255, 255, 0)), (140, 430))
-            self.screen.blit(font.render("Mv Speed", True, (255, 255, 0)), (140, 460))
-            self.screen.blit(font.render("Current lvl:", True, (255, 255, 0)), (140, 490))
-            self.screen.blit(font.render(f"{metadata[1]}", True, (255, 255, 0)), (140, 520))
-            self.screen.blit(font.render("Press 3", True, (255, 255, 0)), (250, 410))
-            self.screen.blit(font.render("Upgrade:", True, (255, 255, 0)), (250, 430))
-            self.screen.blit(font.render("Blt Speed", True, (255, 255, 0)), (250, 460))
-            self.screen.blit(font.render("Current lvl:", True, (255, 255, 0)), (250, 490))
-            self.screen.blit(font.render(f"{metadata[2]}", True, (255, 255, 0)), (250, 520))
-            self.screen.blit(font.render("Press 4", True, (255, 255, 0)), (360, 410))
-            self.screen.blit(font.render("Upgrade:", True, (255, 255, 0)), (360, 430))
-            self.screen.blit(font.render("Pickup Rng", True, (255, 255, 0)), (360, 460))
-            self.screen.blit(font.render("Current lvl:", True, (255, 255, 0)), (360, 490))
-            self.screen.blit(font.render(f"{metadata[3]}", True, (255, 255, 0)), (360, 520))
-            self.screen.blit(font.render("Press 5", True, (255, 255, 0)), (470, 410))
-            self.screen.blit(font.render("Upgrade:", True, (255, 255, 0)), (470, 430))
-            self.screen.blit(font.render("Exp Rate", True, (255, 255, 0)), (470, 460))
-            self.screen.blit(font.render("Current lvl:", True, (255, 255, 0)), (470, 490))
-            self.screen.blit(font.render(f"{metadata[4]}", True, (255, 255, 0)), (470, 520))
-            self.screen.blit(font.render("Press 6", True, (255, 255, 0)), (580, 410))
-            self.screen.blit(font.render("Upgrade:", True, (255, 255, 0)), (580, 430))
-            self.screen.blit(font.render("Blt Pierce", True, (255, 255, 0)), (580, 460))
-            self.screen.blit(font.render("Current lvl:", True, (255, 255, 0)), (580, 490))
-            self.screen.blit(font.render(f"{metadata[5]}", True, (255, 255, 0)), (580, 520))
-            self.screen.blit(font.render("Press 7", True, (255, 255, 0)), (690, 410))
-            self.screen.blit(font.render("Upgrade:", True, (255, 255, 0)), (690, 430))
-            self.screen.blit(font.render("Blt Size", True, (255, 255, 0)), (690, 460))
-            self.screen.blit(font.render("Current lvl:", True, (255, 255, 0)), (690, 490))
-            self.screen.blit(font.render(f"{metadata[6]}", True, (255, 255, 0)), (690, 520))
+            self.draw_meta_upgrades()
             choice = self.check_meta_event()
             pygame.display.flip()
             pygame.time.Clock().tick(30)
         return choice
+
+    def draw_meta_upgrades(self):
+        x_pos = 25
+        metadata = self.meta.meta_status
+        upgrade_choices = ["Firerate", "M Speed", "Blt Speed",\
+                            "Pickup Rng", "Exp Rate", "Blt Pierce", "Blt Size"]
+        font = pygame.font.SysFont("Arial", 18)
+        for i in range(7):
+            pygame.draw.rect(self.screen, (0, 0, 0), (x_pos, 400, 105, 180))
+            self.screen.blit(font.render(f"Press {i+1}",
+                                          True, (255, 255, 0)), (x_pos+5, 410))
+            self.screen.blit(font.render("Upgrade:",
+                                          True, (255, 255, 0)), (x_pos+5, 430))
+            self.screen.blit(font.render(f"{upgrade_choices[i]}",
+                                          True, (255, 255, 0)), (x_pos+5, 460))
+            self.screen.blit(font.render("Current lvl:",
+                                          True, (255, 255, 0)), (x_pos+5, 490))
+            self.screen.blit(font.render(f"{metadata[i]}",
+                                          True, (255, 255, 0)), (x_pos+5, 520))
+            x_pos += 110
 
     def check_meta_event(self):
         choice = None

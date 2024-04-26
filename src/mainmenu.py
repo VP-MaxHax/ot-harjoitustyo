@@ -18,7 +18,6 @@ RUNNING = True
 while RUNNING:
     # Handle events
     for event in pygame.event.get():
-        print(event)
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_F2:
                 game = Game(SELECTED_PROFILE, screen)
