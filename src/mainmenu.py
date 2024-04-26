@@ -11,16 +11,17 @@ width, height = 800, 600
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Vampire Survivor")
 profile = Profile(screen)
-SELECTED_PROFILE = "Default"
+SELECTED_PROFILE = "gamer1"
 white = (255, 255, 255)
 black = (0, 0, 0)
 RUNNING = True
 while RUNNING:
     # Handle events
     for event in pygame.event.get():
+        print(event)
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_F2:
-                game = Game()
+                game = Game(SELECTED_PROFILE, screen)
                 game.run()
             if event.key == pygame.K_F3:
                 SELECTED_PROFILE = profile.mainloop()

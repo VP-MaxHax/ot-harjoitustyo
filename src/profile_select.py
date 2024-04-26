@@ -8,7 +8,7 @@ class Profile:
         pygame.init()
         self.screen = window
         self.colors = self.color_init()
-        self.profiles = ["Gamer 1", "Gamer 2", "Gamer 3"]
+        self.profiles = ["gamer1", "gamer2", "gamer3"]
         self.selected_profile_index = 0
         self.font = pygame.font.SysFont(None, 40)
         self.selected_profile = None
