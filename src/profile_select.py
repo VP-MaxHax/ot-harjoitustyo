@@ -4,7 +4,14 @@ import pygame
 # All of Profile is done with help of Chat-GPT
 
 class Profile:
+    """Class to handle profile selecting interface
+    """
     def __init__(self, window):
+        """Class constructor whitch gets pygame screen as a variable
+
+        Args:
+            window (pygame.display.set_mode): pygame screen spesifications
+        """
         pygame.init()
         self.screen = window
         self.colors = self.color_init()
@@ -14,6 +21,11 @@ class Profile:
         self.selected_profile = None
 
     def color_init(self):
+        """Initalises all colors used by the program
+
+        Returns:
+            Dict: [color]:(tuple of color codes for pygame)
+        """
         colors = {}
         colors["white"] = (255, 255, 255)
         colors["black"] = (0, 0, 0)
@@ -22,6 +34,11 @@ class Profile:
         return colors
 
     def key_event_handler(self, event):
+        """Checks if event includes commands to move or confirm profile selector
+
+        Args:
+            event (pygame.KEYDOWN): keypress from user
+        """
         if event.key == pygame.K_UP:
             self.selected_profile_index =\
                   (self.selected_profile_index - 1) % len(self.profiles)
@@ -32,6 +49,11 @@ class Profile:
             self.selected_profile = self.profiles[self.selected_profile_index]
 
     def mainloop(self):
+        """Main loop of profile selector which draws the screen and return chosen profile to mainmenu
+
+        Returns:
+            str: selected profile name
+        """
         running = True
         self.selected_profile = None
         while running:
@@ -59,9 +81,3 @@ class Profile:
         # Quit Pygame
         pygame.quit()
         sys.exit()
-
-if __name__ == "__main__":
-    width, height = 800, 600
-    screen = pygame.display.set_mode((width, height))
-    profile = Profile(screen)
-    print(profile.mainloop())

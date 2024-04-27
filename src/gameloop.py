@@ -9,7 +9,15 @@ from meta_upgrades import Meta
 
 
 class Game:
+    """Class that runs the game logic
+    """
     def __init__(self, player_profile, screen):
+        """Class constructor, handles shared data ove logic
+
+        Args:
+            player_profile (str): player profile name
+            screen (pygame.display.set_mode): pygame screen spesifications
+        """
         # Initialize Pygame
         pygame.init()
         # Set up the screen
@@ -37,11 +45,18 @@ class Game:
         self.lvlup = None
 
     def setup_vampire_spawn(self):
+        """Prepares vampire spawn timer
+
+        Returns:
+            tuple: (pygame event to spawn a vampire, base interval for that event)
+        """
         self.spawn_vampire_event = pygame.USEREVENT + 1
         self.spawn_interval = 3000  # initial spawn interval in milliseconds
         return self.spawn_vampire_event, self.spawn_interval
 
     def draw(self):
+        """Called on to draw the screen and objects on main gameplay loop
+        """
         self.screen.fill(self.white)
         self.all_sprites.draw(self.screen)
         self.screen.blit(self.score, (300, 0))
@@ -50,6 +65,8 @@ class Game:
         pygame.time.Clock().tick(30)
 
     def draw_levelup(self):
+        """Called on levelup event to show upgrade choices
+        """
         waiting_for_key = True
         choices = self.upgrade.pick_options()
         choice1 = self.upgrade_choices(choices[0])
@@ -67,6 +84,16 @@ class Game:
             waiting_for_key = self.level_up_check_event(choices)
 
     def level_up_check_event(self, choices, test=False, keypress=None):
+        """Used to check choice of upgrade, also quits game if quit event is called
+
+        Args:
+            choices (list): list of three choices for an upgrade
+            test (bool, optional): Used on testing to activate test functionality. Defaults to False.
+            keypress (pygame.event, optional): used on testing to simulate events. Defaults to None.
+
+        Returns:
+            _type_: _description_
+        """
         waiting_for_key = True
         if test is True:
             pygame.event.post(keypress)
@@ -89,6 +116,13 @@ class Game:
         return waiting_for_key
 
     def draw_levelup_choices(self, choice1, choice2, choice3):
+        """Used to draw levelup choices
+
+        Args:
+            choice1 (pygame text object): text object to reflect one of the upgrade choices
+            choice2 (pygame text object): text object to reflect one of the upgrade choices
+            choice3 (pygame text object): text object to reflect one of the upgrade choices
+        """
         font = pygame.font.SysFont("Arial", 40)
         slot1 = font.render("Press 1", True, (255, 0, 0))
         slot2 = font.render("Press 2", True, (255, 0, 0))
@@ -107,6 +141,14 @@ class Game:
         self.screen.blit(slot3, (575, 400))
 
     def upgrade_choices(self, choice):
+        """Used on levelup event to draw correct upgrade choices
+
+        Args:
+            choice (int): integer reflecting an upgrade choice
+
+        Returns:
+            pygame text object: text object to reflect an upgrade choice
+        """
         font = pygame.font.SysFont("Arial", 24)
         match choice:
             case 1:
@@ -126,6 +168,11 @@ class Game:
         return upgrade
 
     def find_closest_vampire(self):
+        """Finds the vampire that is closest to the player and return it
+
+        Returns:
+            Vampire(): vampire class object
+        """
         closest_distance = float('inf')
         closest_vampire = None
         for vampire in self.vampires:
@@ -138,6 +185,8 @@ class Game:
 
     # Main game loop
     def run(self):
+        """Main logic of the gameplay loop
+        """
         running = True
         levelup = False
         while running:
@@ -158,6 +207,11 @@ class Game:
 
     # Handle events
     def handle_events(self):
+        """Checks if there is any event happening on this tick
+
+        Returns:
+            bool: returns is the game ment to be still running
+        """
         running = True
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -168,6 +222,8 @@ class Game:
 
     # Spawn vampire
     def spawn_vampire(self):
+        """Called on to spawn a vampire on vampire_spawn_event
+        """
         vampire = Vampire(self.player)
         self.all_sprites.add(vampire)
         self.vampires.add(vampire)
@@ -176,11 +232,18 @@ class Game:
         pygame.time.set_timer(self.spawn_vampire_event, self.spawn_interval)
 
     def winner(self):
+        """Called on if player got to endgame and won the game. Calls meta upgrade logic.
+        """
         choice = self.draw_metaupgrade_choices()
         self.meta.update_data(choice)
 
 
     def draw_metaupgrade_choices(self):
+        """Draws metaupgrade screen and waits for players pick for upgrade
+
+        Returns:
+            int: integer reflecting players choice of upgrade
+        """
         choice = None
         while choice is None:
             self.screen.fill(self.white)
@@ -200,6 +263,8 @@ class Game:
         return choice
 
     def draw_meta_upgrades(self):
+        """Draws the meta upgrade boxes and text into them
+        """
         x_pos = 25
         metadata = self.meta.meta_status
         upgrade_choices = ["Firerate", "M Speed", "Blt Speed",\
@@ -220,6 +285,11 @@ class Game:
             x_pos += 110
 
     def check_meta_event(self):
+        """Handles players meta upgrade pick in form of keypress
+
+        Returns:
+            int: integer reflecting players choice of upgrade
+        """
         choice = None
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -244,6 +314,14 @@ class Game:
 
 
     def gameover(self, test=False):
+        """Game over event if player dies before endgame
+
+        Args:
+            test (bool, optional): used on testing to activate test functionality. Defaults to False.
+
+        Returns:
+            str: used in testing to return a value
+        """
         font = pygame.font.SysFont("Arial", 40)
         self.screen.blit(font.render("You died!", True, (255, 0, 0)), (300, 100))
         self.screen.blit(font.render("Press ENTER to go back to main menu.",
@@ -260,6 +338,15 @@ class Game:
         return "GameOver"
 
     def check_gameover_events(self, event, test=False):
+        """Check keypresses and quit events in gameover state
+
+        Args:
+            event (pygame.event): pygame game event
+            test (bool, optional): used on testing to activate test functionality. Defaults to False.
+
+        Returns:
+            _type_: _description_
+        """
         if event.type == pygame.QUIT:
             pygame.quit()
             if test is True:
@@ -272,6 +359,7 @@ class Game:
 
     # Update sprites
     def update_sprites(self):
+        """Updates all sprites on the screen. Also checks if its time to shoot and does so if it is."""
         self.all_sprites.update()
         vamp = self.find_closest_vampire()
         bullet, shot = self.player.shoot(vamp)
@@ -281,6 +369,12 @@ class Game:
 
     # Check collisions
     def check_collisions(self):
+        """Checks sprite collisions. Collisions include:
+        player-vampire, bullet-vampire, player-pickup
+
+        Returns:
+            bool: if collition between player-vampire signal False to game still runnign.
+        """
         hits = pygame.sprite.spritecollide(self.player, self.vampires, False)
         if hits:
             return False
@@ -297,6 +391,8 @@ class Game:
 
     # Handle pickup collisions
     def handle_pickup_collisions(self):
+        """Handles details of player-pickup collision
+        """
         for sprite in self.pickups:
             if sprite.collision_box.colliderect(self.player.rect):
                 self.player.stats.score += self.player.stats.exprate
@@ -304,12 +400,22 @@ class Game:
 
     # Handle bullet hit
     def handle_bullet_hit(self, bullet):
+        """Checks if bullet has still pierce charges left. Removes bullet if not.
+
+        Args:
+            bullet (Bullet()): bullet class object
+        """
         bullet.pierce -= 1
         if bullet.pierce == 0:
             bullet.kill()
 
     # Handle vampire hit
     def handle_vampire_hit(self, vampire_hit):
+        """Handles removing vampire when hit by bullet. Also spawn pickup on same spot
+
+        Args:
+            vampire_hit (Vampire()): vampire class object
+        """
         self.vampires.remove(vampire_hit)
         self.all_sprites.remove(vampire_hit)
         if self.spawn_interval > 10:
@@ -322,6 +428,8 @@ class Game:
 
     # Update score display
     def update_score_display(self):
+        """Updates score (exp) on top of screen
+        """
         font = pygame.font.SysFont("Arial", 40)
         self.score = font.render(
             f"Score {self.player.stats.score:07}", True, (255, 0, 0))
@@ -330,6 +438,11 @@ class Game:
 
     # Handle level up
     def handle_levelup(self, levelup):
+        """Levelup event trigger and main logic.
+
+        Args:
+            levelup (bool): determines has levelup happened
+        """
         if self.player.stats.score >= self.player.stats.nxt_lvl:
             self.player.stats.pts_for_lvlup += 1
             self.player.stats.nxt_lvl = self.player.stats.score + \

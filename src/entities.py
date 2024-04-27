@@ -15,7 +15,14 @@ YELLOW = (255, 255, 0)
 
 # Define the player class
 class Player(pygame.sprite.Sprite):
+    """Class that handles players stats and other variables
+
+    Args:
+        pygame (pygame.sprite.Sprite): pygame sprite data
+    """
     def __init__(self):
+        """Constructor for player class object
+        """
         super().__init__()
         self.image = pygame.Surface((50, 50))
         self.image.fill(BLUE)
@@ -25,6 +32,11 @@ class Player(pygame.sprite.Sprite):
 
 
     def update(self, keypress=None):
+        """Player movement based on keys pressed
+
+        Args:
+            keypress (pygame.key, optional): Used on testing to input movement command. Defaults to None.
+        """
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] or keypress == "left":
             self.rect.x -= self.stats.mv_speed
@@ -36,6 +48,14 @@ class Player(pygame.sprite.Sprite):
             self.rect.y += self.stats.mv_speed
 
     def shoot(self, closest_vampire):
+        """Triggers the player to shoot towards closest vampire when timer epires
+
+        Args:
+            closest_vampire (Vampire): vampire class object
+
+        Returns:
+            bullet()(if fired), bool: return bullet and info if bullet was fired
+        """
         # Shoot towards the closest vampire
         now = pygame.time.get_ticks()
         if now - self.stats.last_shot > self.stats.shoot_delay:
@@ -52,6 +72,8 @@ class Player(pygame.sprite.Sprite):
         return None, False
 
 class PlayerStats:
+    """Class that hold info of players stats
+    """
     def __init__(self):
         self.shoot_delay = 1000  # milliseconds
         self.last_shot = pygame.time.get_ticks()
@@ -68,7 +90,17 @@ class PlayerStats:
 
 # Define the vampire class
 class Vampire(pygame.sprite.Sprite):
+    """Class that handles vampires variables
+
+    Args:
+        pygame (pygame.sprite.Sprite): pygame sprite data
+    """
     def __init__(self, player):
+        """Class constructor which holds vampire objects base info and stats
+
+        Args:
+            player (Player()): player object for vampire to get a target
+        """
         super().__init__()
         self.image = pygame.Surface((30, 30))
         self.image.fill(RED)
@@ -78,6 +110,11 @@ class Vampire(pygame.sprite.Sprite):
         self.spawn_on_edge()
 
     def spawn_on_edge(self, side=None):
+        """Spawns vampire on the edge of the screen
+
+        Args:
+            side (str, optional): Used in testing to determine a spawn side for vampire. Defaults to None.
+        """
         if side is None:
             side = random.choice(["top", "bottom", "left", "right"])
         if side == "top":
@@ -94,6 +131,8 @@ class Vampire(pygame.sprite.Sprite):
             self.rect.centery = random.randint(0, HEIGHT)
 
     def update(self):
+        """Used to move vampire towards player every game tick
+        """
         dx = self.player.rect.centerx - self.rect.centerx
         dy = self.player.rect.centery - self.rect.centery
         distance = math.sqrt(dx ** 2 + dy ** 2)
@@ -106,7 +145,21 @@ class Vampire(pygame.sprite.Sprite):
 
 # Define the bullet class
 class Bullet(pygame.sprite.Sprite):
+    """Class that handles bullet class variables
+
+    Args:
+        pygame (pygame.sprite.Sprite): pygame sprite data
+    """
     def __init__(self, x, y, dx, dy, upgrades):
+        """Class constructor which holds bullets objects base info and stats
+
+        Args:
+            x (int): current x axis location of the bullet
+            y (int): current y axis location of the bullet
+            dx (int): bullets movement speed in x axis
+            dy (int): bullets movement speed in y axis
+            upgrades (tuple): holds upgrade info for bullet (bullet speed, bullet size, bullet pierce)
+        """
         super().__init__()
         self.image = pygame.Surface((upgrades[1], upgrades[1]))
         self.image.fill(GREEN)
@@ -118,6 +171,8 @@ class Bullet(pygame.sprite.Sprite):
         self.pierce = upgrades[2]
 
     def update(self):
+        """Updates bullets location on each tick. Also despawns bullet if it goes out of screen.
+        """
         self.rect.x += self.speedx
         self.rect.y += self.speedy
         # Kill the bullet if it goes off the screen
@@ -127,7 +182,19 @@ class Bullet(pygame.sprite.Sprite):
 
 # Define the pickup class
 class Pickup(pygame.sprite.Sprite):
+    """Class that handles pickup class variables
+
+    Args:
+        pygame (pygame.sprite.Sprite): pygame sprite data
+    """
     def __init__(self, x, y, pickupradius):
+        """Class constructor which holds bullets objects base info and stats
+
+        Args:
+            x (int): pickups location in x axis
+            y (int): pickups location in y axis
+            pickupradius (int): pickups radius based on players 'pickup radius' upgrade
+        """
         super().__init__()
         self.image = pygame.Surface((20, 20), pygame.SRCALPHA)
         self.image.fill(YELLOW)
