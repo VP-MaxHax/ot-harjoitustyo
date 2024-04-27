@@ -77,3 +77,9 @@ Käytetyt tunnit 1h (yht. 26h)
 Meta upgrade tietokannan alustus. Meta_upgrades kansioo Meta luokka hallinnoimaan tietokannan noutoa, päivitystä sekä päivitysten hallintaa varten.
 
 Käytetyt tunnit 4h (yht. 30h)
+
+## 27.4.2024
+
+Docstringien kirjoittamista.
+
+Käytetyt tunnit 2h (yht. 32h)
