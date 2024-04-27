@@ -5,13 +5,18 @@ class Meta:
     """Class to handle all databade interactions and meta upgrade data
     """
     def __init__(self, upgrades, player_profile, test=False, test_data=None):
-        """Class constructor to handle variables of meta class. Also creates database if one does not exist.
+        """Class constructor to handle variables of meta class. 
+        Also creates database if one does not exist.
 
         Args:
             upgrades (Upgrades()): upgrades class object
             player_profile (str): profile name which is used
-            test (bool, optional): used in testing to access test fuctionality. Defaults to False.
-            test_data (str, optional): used in testing to insert custom values to database. Defaults to None.
+
+            test (bool, optional): used in testing to access test fuctionality. 
+            Defaults to False.
+
+            test_data (str, optional): used in testing to insert custom values to database. 
+            Defaults to None.
         """
         if not self.database_exists("meta.db"):
             self.init_database()

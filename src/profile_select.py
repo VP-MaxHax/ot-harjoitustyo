@@ -49,7 +49,8 @@ class Profile:
             self.selected_profile = self.profiles[self.selected_profile_index]
 
     def mainloop(self):
-        """Main loop of profile selector which draws the screen and return chosen profile to mainmenu
+        """Main loop of profile selector which draws the screen 
+        and return chosen profile to mainmenu.
 
         Returns:
             str: selected profile name

@@ -35,7 +35,9 @@ class Player(pygame.sprite.Sprite):
         """Player movement based on keys pressed
 
         Args:
-            keypress (pygame.key, optional): Used on testing to input movement command. Defaults to None.
+            keypress (pygame.key, optional): 
+            Used on testing to input movement command. 
+            Defaults to None.
         """
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] or keypress == "left":
@@ -113,7 +115,9 @@ class Vampire(pygame.sprite.Sprite):
         """Spawns vampire on the edge of the screen
 
         Args:
-            side (str, optional): Used in testing to determine a spawn side for vampire. Defaults to None.
+            side (str, optional): 
+            Used in testing to determine a spawn side for vampire. 
+            Defaults to None.
         """
         if side is None:
             side = random.choice(["top", "bottom", "left", "right"])
@@ -158,7 +162,8 @@ class Bullet(pygame.sprite.Sprite):
             y (int): current y axis location of the bullet
             dx (int): bullets movement speed in x axis
             dy (int): bullets movement speed in y axis
-            upgrades (tuple): holds upgrade info for bullet (bullet speed, bullet size, bullet pierce)
+            upgrades (tuple): holds upgrade info for bullet 
+            (bullet speed, bullet size, bullet pierce)
         """
         super().__init__()
         self.image = pygame.Surface((upgrades[1], upgrades[1]))

@@ -88,8 +88,11 @@ class Game:
 
         Args:
             choices (list): list of three choices for an upgrade
-            test (bool, optional): Used on testing to activate test functionality. Defaults to False.
-            keypress (pygame.event, optional): used on testing to simulate events. Defaults to None.
+            test (bool, optional): Used on testing to activate test functionality. 
+            Defaults to False.
+            
+            keypress (pygame.event, optional): used on testing to simulate events. 
+            Defaults to None.
 
         Returns:
             _type_: _description_
@@ -317,7 +320,8 @@ class Game:
         """Game over event if player dies before endgame
 
         Args:
-            test (bool, optional): used on testing to activate test functionality. Defaults to False.
+            test (bool, optional): used on testing to activate test functionality. 
+            Defaults to False.
 
         Returns:
             str: used in testing to return a value
@@ -342,7 +346,8 @@ class Game:
 
         Args:
             event (pygame.event): pygame game event
-            test (bool, optional): used on testing to activate test functionality. Defaults to False.
+            test (bool, optional): used on testing to activate test functionality. 
+            Defaults to False.
 
         Returns:
             _type_: _description_
@@ -359,7 +364,8 @@ class Game:
 
     # Update sprites
     def update_sprites(self):
-        """Updates all sprites on the screen. Also checks if its time to shoot and does so if it is."""
+        """Updates all sprites on the screen. 
+        Also checks if its time to shoot and does so if it is."""
         self.all_sprites.update()
         vamp = self.find_closest_vampire()
         bullet, shot = self.player.shoot(vamp)
