@@ -1,9 +1,8 @@
 import unittest
 import pygame
 from upgrades import Upgrades
-from entities import Player, Vampire, Bullet, Pickup
+from entities import Player, Vampire
 from gameloop import Game
-from meta_upgrades import Meta
 
 
 class TestEntities(unittest.TestCase):

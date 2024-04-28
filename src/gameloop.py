@@ -39,9 +39,8 @@ class Game:
         self.meta = Meta(self.upgrade, player_profile)
         self.meta.apply_meta_upgrades()
         # Timer for vampire spawning
-        self.spawn_vampire_event, self.spawn_interval = self.setup_vampire_spawn()
+        self.spawn_vampire_event, self.spawn_interval, self.ticks = self.setup_vampire_spawn()
         pygame.time.set_timer(self.spawn_vampire_event, self.spawn_interval)
-        self.ticks = 0
         self.score = None
         self.lvlup = None
 
@@ -53,7 +52,16 @@ class Game:
         """
         self.spawn_vampire_event = pygame.USEREVENT + 1
         self.spawn_interval = 3000  # initial spawn interval in milliseconds
-        return self.spawn_vampire_event, self.spawn_interval
+        return self.spawn_vampire_event, self.spawn_interval, 0
+
+    def simulate_key_press(self, key):
+        """Used in testing to inject keypresses to pygame event log.
+
+        Args:
+            key (pygame.K_"key"): pygame key code
+        """
+        event = pygame.event.Event(pygame.KEYDOWN, key=key)
+        pygame.event.post(event)
 
     def draw(self):
         """Called on to draw the screen and objects on main gameplay loop

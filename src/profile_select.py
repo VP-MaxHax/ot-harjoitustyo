@@ -6,7 +6,7 @@ import pygame
 class Profile:
     """Class to handle profile selecting interface
     """
-    def __init__(self, window):
+    def __init__(self, window, test=False):
         """Class constructor whitch gets pygame screen as a variable
 
         Args:
@@ -19,6 +19,7 @@ class Profile:
         self.selected_profile_index = 0
         self.font = pygame.font.SysFont(None, 40)
         self.selected_profile = None
+        self.test = test
 
     def color_init(self):
         """Initalises all colors used by the program
@@ -47,6 +48,15 @@ class Profile:
                   (self.selected_profile_index + 1) % len(self.profiles)
         elif event.key == pygame.K_RETURN:
             self.selected_profile = self.profiles[self.selected_profile_index]
+
+    def simulate_key_press(self, key):
+        """Used in testing to inject keypresses to pygame event log.
+
+        Args:
+            key (pygame.K_"key"): pygame key code
+        """
+        event = pygame.event.Event(pygame.KEYDOWN, key=key)
+        pygame.event.post(event)
 
     def mainloop(self):
         """Main loop of profile selector which draws the screen 
@@ -78,6 +88,9 @@ class Profile:
 
             # Update the display
             pygame.display.flip()
+
+            if self.test is True:
+                return None
 
         # Quit Pygame
         pygame.quit()

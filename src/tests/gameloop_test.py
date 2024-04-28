@@ -1,8 +1,9 @@
 import unittest
-from upgrades import Upgrades
-from entities import Player, Vampire, Bullet, Pickup
-from gameloop import Game
 import pygame
+from upgrades import Upgrades
+from entities import Player, Vampire
+from gameloop import Game
+
 
 class TestGameloop(unittest.TestCase):
     def setUp(self):
@@ -149,3 +150,31 @@ class TestGameloop(unittest.TestCase):
         self.game.vampires.add(vampire4)
         closest = self.game.find_closest_vampire()
         self.assertEqual((closest.rect.x, closest.rect.y), (400,125))
+
+    def test_meta_upgrade_choice_1_is_returned_correctly(self):
+        self.game.simulate_key_press(pygame.K_1)
+        self.assertEqual(self.game.draw_metaupgrade_choices(), 1)
+
+    def test_meta_upgrade_choice_2_is_returned_correctly(self):
+        self.game.simulate_key_press(pygame.K_2)
+        self.assertEqual(self.game.draw_metaupgrade_choices(), 2)
+
+    def test_meta_upgrade_choice_3_is_returned_correctly(self):
+        self.game.simulate_key_press(pygame.K_3)
+        self.assertEqual(self.game.draw_metaupgrade_choices(), 3)
+
+    def test_meta_upgrade_choice_4_is_returned_correctly(self):
+        self.game.simulate_key_press(pygame.K_4)
+        self.assertEqual(self.game.draw_metaupgrade_choices(), 4)
+
+    def test_meta_upgrade_choice_5_is_returned_correctly(self):
+        self.game.simulate_key_press(pygame.K_5)
+        self.assertEqual(self.game.draw_metaupgrade_choices(), 5)
+
+    def test_meta_upgrade_choice_6_is_returned_correctly(self):
+        self.game.simulate_key_press(pygame.K_6)
+        self.assertEqual(self.game.draw_metaupgrade_choices(), 6)
+
+    def test_meta_upgrade_choice_7_is_returned_correctly(self):
+        self.game.simulate_key_press(pygame.K_7)
+        self.assertEqual(self.game.draw_metaupgrade_choices(), 7)

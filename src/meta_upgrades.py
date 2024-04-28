@@ -1,10 +1,12 @@
 import os
 import sqlite3
 
+# Database queries made whith some help from Chat-GPT
+
 class Meta:
     """Class to handle all databade interactions and meta upgrade data
     """
-    def __init__(self, upgrades, player_profile, test=False, test_data=None):
+    def __init__(self, upgrades, player_profile, database="meta.db"):
         """Class constructor to handle variables of meta class. 
         Also creates database if one does not exist.
 
@@ -18,15 +20,12 @@ class Meta:
             test_data (str, optional): used in testing to insert custom values to database. 
             Defaults to None.
         """
-        if not self.database_exists("meta.db"):
-            self.init_database()
-        self.conn = sqlite3.connect('meta.db')
+        if not self.database_exists(database):
+            self.init_database(database)
+        self.conn = sqlite3.connect(database)
         self.upgrades = upgrades
         self.profile = player_profile
-        if test is True:
-            self.meta_status = self.test_init(test_data)
-        else:
-            self.meta_status = self.fetch_data()
+        self.meta_status = self.fetch_data()
 
     def database_exists(self, path):
         """Checks if database is present in correct location
@@ -39,10 +38,10 @@ class Meta:
         """
         return os.path.exists(path)
 
-    def init_database(self):
+    def init_database(self, database):
         """Function to initialise a new database
         """
-        conn = sqlite3.connect('meta.db')
+        conn = sqlite3.connect(database)
         cursor = conn.cursor()
         create_table_sql = '''
         CREATE TABLE IF NOT EXISTS Profiles (
@@ -54,12 +53,12 @@ class Meta:
         cursor.execute(create_table_sql)
         conn.commit()
         conn.close()
-        self.insert_rows()
+        self.insert_rows(database)
 
-    def insert_rows(self):
+    def insert_rows(self, database):
         """Inserts default base data to new database
         """
-        conn = sqlite3.connect('meta.db')
+        conn = sqlite3.connect(database)
         cursor = conn.cursor()
         insert_row_sql = '''
             INSERT INTO Profiles (name, upgrades) 
@@ -123,19 +122,6 @@ class Meta:
         '''
         cursor.execute(query, (self.meta_status, self.profile))
         self.conn.commit()
-        self.conn.close()
-
-    def test_init(self, test_data):
-        """Used on testing to initialise a test user to database
-
-        Args:
-            test_data (str): custom meta upgrade status
-
-        Returns:
-            str: returns meta upgrade status
-        """
-        self.add_test_profile(test_data)
-        return self.fetch_data()
 
     def add_test_profile(self, upgrade_status):
         """Used to add a test profile to the database
@@ -145,7 +131,7 @@ class Meta:
         """
         cursor = self.conn.cursor()
         query = '''
-        INSERT INTO Profiles (username, email) 
+        INSERT INTO Profiles (name, upgrades) 
         VALUES (?, ?);
         '''
         values = ("test", upgrade_status)
