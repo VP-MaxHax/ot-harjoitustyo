@@ -83,3 +83,9 @@ Käytetyt tunnit 4h (yht. 30h)
 Docstringien kirjoittamista.
 
 Käytetyt tunnit 2h (yht. 32h)
+
+## 28.4.2024
+
+Tietokanta yhteyksien logiikan lisääminen arkkitehtuuri.md tiedostoon.
+
+Käytetyt tunnit 1h (yht. 33h)
