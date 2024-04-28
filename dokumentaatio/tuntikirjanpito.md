@@ -86,6 +86,6 @@ Käytetyt tunnit 2h (yht. 32h)
 
 ## 28.4.2024
 
-Tietokanta yhteyksien logiikan lisääminen arkkitehtuuri.md tiedostoon.
+Tietokanta yhteyksien logiikan lisääminen arkkitehtuuri.md tiedostoon. Koodikatselmoinnissa saadun palautteen toimeenpanemista. Testikattavuuden laajentamista.
 
-Käytetyt tunnit 1h (yht. 33h)
+Käytetyt tunnit 3h (yht. 35h)

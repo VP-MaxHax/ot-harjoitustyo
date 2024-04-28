@@ -40,3 +40,11 @@ Täältä löytyvät kehitysviikkojen summatut lyhyet selitykset. Tarkemmat päi
 - Testikattavuuden laajennusta
 - Sovelluslogiikan lisäys dokumentaatioon
 - Ensimmäinen release
+
+## Viikko 6
+
+- Meta tietokannan alustus ja käyttöönotto
+- Tietokannan luku- ja kirjoituskaaviot arkkitehtuuri.md tiedostoon
+- Docstringien kirjoittamista
+- Testikattavuuden laajentamista
+- Toinen release
