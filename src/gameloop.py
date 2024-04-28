@@ -41,6 +41,7 @@ class Game:
         # Timer for vampire spawning
         self.spawn_vampire_event, self.spawn_interval = self.setup_vampire_spawn()
         pygame.time.set_timer(self.spawn_vampire_event, self.spawn_interval)
+        self.ticks = 0
         self.score = None
         self.lvlup = None
 
@@ -193,6 +194,7 @@ class Game:
         running = True
         levelup = False
         while running:
+            self.ticks += 1
             if not self.handle_events():
                 break
             self.update_sprites()
@@ -231,7 +233,7 @@ class Game:
         self.all_sprites.add(vampire)
         self.vampires.add(vampire)
         self.spawn_interval = max(
-            int(2000-(math.sqrt(pygame.time.get_ticks())*5))//1, 5)
+            int(2000-(self.ticks//3)), 5)
         pygame.time.set_timer(self.spawn_vampire_event, self.spawn_interval)
 
     def winner(self):
