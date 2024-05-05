@@ -5,7 +5,7 @@ from entities import Player, Vampire, Pickup
 from upgrades import Upgrades
 from meta_upgrades import Meta
 
-# All of gameloop is done with help of Chat-GPT
+# For ChatGPT usage report, read ChatGPT_kaytto_raportti.md
 
 
 class Game:

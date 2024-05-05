@@ -48,3 +48,9 @@ Täältä löytyvät kehitysviikkojen summatut lyhyet selitykset. Tarkemmat päi
 - Docstringien kirjoittamista
 - Testikattavuuden laajentamista
 - Toinen release
+
+## Viikko 7
+
+- Testausraportti
+- ChatGPT raportti
+- Viimeinen release

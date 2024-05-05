@@ -5,11 +5,11 @@
 Sovellus on peli jonka idea on mukailla tämän hetken villitystä Vampire Survivor-like tyylisistä peleistä. 
 
 ## Sovelluksen tila
-Tähän mennessä olen heitellyt ideoita yhteen (game.py) tiedostoon ja katsonut mitä saan aikaan. Kasassa ihan toimiva alfa versio kuvittelemastani pelistä. Edessä kattavat refaktoroinnit että saa itse projektin kunnolla alkuunsa. 
+Tällä hetkellä sovellus on toimiva vaikka jokseenkin simppeli versio esikuvastaan. Sovelluksessa on pää-pelilooppi joka kestää noin 3 minuuttia läpäistä. Jos tämän läpäisee saa pelin alussa valitsemalle profiilille yhden pysyvän päityksen josta tieto tallennetaan pysyvästi tietokantaan, joka saatavilla sieltä myöhemmilläkin pelikerroilla.
 
 ## Sovelluksen käyttöliittymä
 
-Sovelluksessa on aluksi päävalikko josta pelaaja voi aloittaa pelin. Pelinäkymässä ollaan kunnes peli päättyy jolloin palataan päävalikkoon tai aloitetaan uusi peli.
+Sovelluksessa on aluksi päävalikko josta pelaaja voi aloittaa pelin sekä valita käyttämänsä profiilin. Pelinäkymässä ollaan kunnes peli päättyy jolloin palataan päävalikkoon tai aloitetaan uusi peli.
 
 ## Pelin toteutettuja toiminnallisuuksia
 
@@ -25,3 +25,4 @@ Sovelluksessa on aluksi päävalikko josta pelaaja voi aloittaa pelin. Pelinäky
 - Lisää päivityksiä.
 - Eri tasoisia päivityksiä.
 - Lisää pelattavia hahmoja eri aseilla.
+- Graafisia päivityksiä hahmoille ja taustalle.

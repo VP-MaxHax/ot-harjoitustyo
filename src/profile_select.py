@@ -1,7 +1,7 @@
 import sys
 import pygame
 
-# All of Profile is done with help of Chat-GPT
+# For ChatGPT usage report, read ChatGPT_kaytto_raportti.md
 
 class Profile:
     """Class to handle profile selecting interface

@@ -2,7 +2,7 @@ import random
 import math
 import pygame
 
-# All entities done with the help of Chat-GPT
+# For ChatGPT usage report, read ChatGPT_kaytto_raportti.md
 
 WIDTH, HEIGHT = 800, 600
 

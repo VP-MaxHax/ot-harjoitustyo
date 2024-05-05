@@ -12,6 +12,10 @@ Sovellus on peli jonka idea on mukailla tämän hetken villitystä Vampire Survi
 
 [Ohjelman arkkitehtuuri](https://github.com/VP-MaxHax/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
+[Testausdokumentti](https://github.com/VP-MaxHax/ot-harjoitustyo/blob/master/dokumentaatio/testaus.md)
+
+[Selvitys ChatGPT:n käytöstä](https://github.com/VP-MaxHax/ot-harjoitustyo/blob/master/dokumentaatio/ChatGPT_kaytto_raportti.md)
+
 # Asennus
 
 1. Asenna vaaditut riippuvuudet komennolla 

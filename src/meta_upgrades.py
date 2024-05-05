@@ -1,13 +1,13 @@
 import os
 import sqlite3
 
-# Database queries made whith some help from Chat-GPT
+# For ChatGPT usage report, read ChatGPT_kaytto_raportti.md
 
 class Meta:
     """Class to handle all databade interactions and meta upgrade data
     """
     def __init__(self, upgrades, player_profile, database="meta.db"):
-        """Class constructor to handle variables of meta class. 
+        """Class constructor to handle variables of meta class.
         Also creates database if one does not exist.
 
         Args:

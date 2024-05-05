@@ -89,3 +89,9 @@ Käytetyt tunnit 2h (yht. 32h)
 Tietokanta yhteyksien logiikan lisääminen arkkitehtuuri.md tiedostoon. Koodikatselmoinnissa saadun palautteen toimeenpanemista. Testikattavuuden laajentamista.
 
 Käytetyt tunnit 3h (yht. 35h)
+
+## 5.5.2024
+
+Projektin loppudokumentaatiota. testaus.md luonti ja kirjoitus. ChatGPT_kaytto_raportti.md luonti ja kirjoitus. Vaatimusmäärittelyn päivitys vastaamaan projektin tilaa. Viimeinen release.
+
+Käytetyt tunnit 2h (yht. 37h)

@@ -1,7 +1,6 @@
 import random
 
-# Define upgrades
-
+# For ChatGPT usage report, read ChatGPT_kaytto_raportti.md
 
 class Upgrades:
     """Class that handles handing out upgrade choices and applying player upgrades
@@ -99,7 +98,5 @@ class Upgrades:
                 change = True
 
             case _:
-                # Default case if chosen doesn't match any of the above cases
-                # Handle the default behavior here or simply pass if not needed
                 change = False
         return change
